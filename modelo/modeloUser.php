@@ -23,15 +23,16 @@ class Usuario
     }
 
     //metodo loguearse el cual recibe parametros que vienen del controlador de la respectiva clase para ejecutar la consulta sql 
-    function loguarse($usuario,$pass)
+    function loguarse($usuario, $pass)
     {
         try {
             $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.id_Usuario = rol.id_Rol WHERE usuario=:usuario AND pass =:pass";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':usuario' =>$usuario , ':pass' =>$pass ));
+            $query->execute(array(':usuario' => $usuario, ':pass' => $pass));
             //escribe los campos y datos de la tabla usuario del usuario logueado 
             $this->objetos = $query->fetchAll();
             return $this->objetos;
+
         } catch (PDOException $e) {
             die("Error al ejecutar la consulta: " . $e->getMessage());
         }
