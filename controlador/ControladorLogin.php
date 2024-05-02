@@ -30,7 +30,7 @@ if(!empty($_SESSION['rol'])){
     //validacion para el acceso a los diferentes permisos del sistema 
     if (!empty($usuario->objetos)) {
         foreach ($usuario->objetos as $objeto) {
-            $_SESSION['usuario'] = $objeto->id_Usuario;
+            $_SESSION['usuario'] = $objeto->id_Usuario ;
             $_SESSION['rol'] = $objeto->id_rol;
             $_SESSION['nombre'] = $objeto->nombre;
             $_SESSION['apellido'] = $objeto->apellido;
