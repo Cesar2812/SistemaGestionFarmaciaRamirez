@@ -47,6 +47,7 @@ if ($_SESSION['rol'] == 1) {
                                     <div class="text-center">
                                         <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
                                     </div>
+                                    <input id="id_Usuario" type="" value="<?php echo $_SESSION['usuario']?>">
                                     <h3 class="profile-username  text-center text-dark">
                                         Nombre
                                     </h3>
@@ -145,7 +146,7 @@ if ($_SESSION['rol'] == 1) {
     </div>
     </div>
     <?php
-        include_once 'layouts/funciones.php';
+    include_once 'layouts/funciones.php';
 } else {
     header('Location:../index.php');
 }

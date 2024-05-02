@@ -31,12 +31,9 @@ if(!empty($_SESSION['rol'])){
     if (!empty($usuario->objetos)) {
         foreach ($usuario->objetos as $objeto) {
             $_SESSION['usuario'] = $objeto->id_Usuario;
+            $_SESSION['rol'] = $objeto->id_rol;
             $_SESSION['nombre'] = $objeto->nombre;
             $_SESSION['apellido'] = $objeto->apellido;
-            $_SESSION['rol'] = $objeto->id_rol;
-            $_SESSION['telefono'] = $objeto->Telefono;
-            $_SESSION['correo'] = $objeto->Correo;
-            $_SESSION['residencia'] = $objeto->Residencia;
         }
 
         //validando en base al rol que tenga el usuario para activar las diferentes vistas del sistema 
