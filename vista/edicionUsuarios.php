@@ -47,12 +47,12 @@ if ($_SESSION['rol'] == 1) {
                                     <div class="text-center">
                                         <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
                                     </div>
-                                    <input id="id_usuario" type="" value="<?php echo $_SESSION['rol']?>">
-                                    <h3 id="nombre"class="profile-username  text-center text-dark">
+                                    <input id="id_Usuario" type="hidden" value="<?php  echo $_SESSION['rol']//var_dump($_SESSION['usuario'])?>">
+                                    <h3 class="profile-username  text-center text-dark">
                                         Nombre
                                     </h3>
 
-                                    <p id="apellido"class="text-muted text-center">Apellido</p>
+                                    <p class="text-muted text-center">Apellido</p>
 
                                     <ul class="list-group list-group-unbordered mb-3">
                                         <li class="list-group-item">
@@ -60,12 +60,12 @@ if ($_SESSION['rol'] == 1) {
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b style="color:black">Edad</b><a id="edad"class="float-right">12</a>
+                                            <b style="color:black">Edad</b><a class="float-right">12</a>
                                         </li>
 
                                         <li class="list-group-item">
                                             <b style="color:black">Rol De Usuario</b><span
-                                                id="id_rol" class=" float-right badge badge-success">Administrador</span>
+                                                class=" float-right badge badge-success">Administrador</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -78,17 +78,17 @@ if ($_SESSION['rol'] == 1) {
                                     <strong style="color:black">
                                         <i class="fa fa-phone mr-1"></i>Telefono
                                     </strong>
-                                    <p id="Telefono" class="text-muted">87844571</p>
+                                    <p class="text-muted">87844571</p>
 
                                     <strong style="color:black">
                                         <i class="fas fa-map-marker-alt mr-1"></i>Residensia
                                     </strong>
-                                    <p id="Residencia"class="text-muted">Granada</p>
+                                    <p class="text-muted">Granada</p>
 
                                     <strong style="color:black">
                                         <i class="fa fa-envelope"></i> Correo
                                     </strong>
-                                    <p id="Correo"class="text-muted">admon_faramirez@gamil.com</p>
+                                    <p class="text-muted">admon_faramirez@gamil.com</p>
 
                                     <button class="btn btn-block btn-secondary">Editar</button>
                                 </div>
