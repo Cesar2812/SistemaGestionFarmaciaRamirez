@@ -86,7 +86,7 @@ if (!empty($_SESSION['rol'])) {
                 const password = document.querySelector('input[name="pass"]').value;
 
                 if (username === '' || password === '') {
-                    handleLoginError('Por favor, complete todos los campos.');
+                    handleLoginError('Por favor, llene todos los campos.');
                     return;
                 }
                 this.submit();
