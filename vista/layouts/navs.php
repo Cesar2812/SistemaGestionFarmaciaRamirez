@@ -30,12 +30,12 @@
                 </li>
             </ul>
 
-        
+
             <ul class="navbar-nav ml-auto">
                 <a href="../controlador/ControladorDeslogueo.php">Cerrar Sesion</a>
             </ul>
         </nav>
-       
+
 
         <!-- Navegacion Parte Izquierda -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -67,30 +67,39 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        <li class="nav-header">Usuario</li>
+                        <li class="nav-header">USUARIO</li>
 
                         <li class="nav-item">
                             <a href="../vista/edicionUsuarios.php" class="nav-link">
-                                <i class="nav-icon fas fa-user-cog"></i>
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Datos Del Usuario
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../vista/edicionUsuarios.php" class="nav-link">
+                               <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Datos Del Usuario
                                 </p>
                             </a>
                         </li>
 
-                        <li class="nav-header">EXAMPLES</li>
+                        <li class="nav-header">LABORATORIO</li>
 
                         <li class="nav-item">
-                            <a href="../gallery.html" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
+                            <a href="../vista/edicionUsuarios.php" class="nav-link">
+                                <i class="fa fa-flask"></i>
                                 <p>
-                                    Gallery
+                                    Nuevo Laboratorio
                                 </p>
                             </a>
                         </li>
 
+                        
                     </ul>
                 </nav>
-                
+
             </div>
         </aside>
