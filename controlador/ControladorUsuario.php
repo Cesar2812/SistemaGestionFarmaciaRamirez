@@ -17,6 +17,7 @@ if ($_POST['funcion'] == 'buscar_Usuario') {
             'telefono' => $objeto->telefono,
             'residencia' => $objeto->residencia,
             'correo' => $objeto->correo
+            //esto toma datos desde la base de datos
         );
     }
     $jsonString = json_encode($json[0]);

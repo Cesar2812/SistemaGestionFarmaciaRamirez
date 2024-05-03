@@ -69,7 +69,7 @@ if (!empty($_SESSION['rol'])) {
             // Function to handle empty or incorrect login credentials
             function handleLoginError(errorMessage) {
                 Swal.fire({
-                    position: "top-end",
+                    position: "center",
                     title: 'Error de Inicio de Sesión',
                     text: errorMessage,
                     icon: 'error',

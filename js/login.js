@@ -16,6 +16,7 @@ function remcl() {
 }
 
 //añadiendo la funcion del focus a los inputs
+//este es otro focus
 inputs.forEach(input => {
     input.addEventListener("focus", addcl);
     input.addEventListener("blur", remcl);

@@ -18,7 +18,7 @@ if ($_SESSION['rol'] == 1) {
 
     <script>
         Swal.fire({
-            position: "top-end",
+            position: "Center",
             icon: "success",
             title: "Bienvenido al Sistema\n <?php echo $_SESSION['nombre'] . ' ' . $_SESSION['apellido'] ?>",
             showConfirmButton: false,
