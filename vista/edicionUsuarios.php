@@ -49,10 +49,10 @@ if ($_SESSION['rol'] == 1) {
                                     </div>
                                     <input id="id_Usuario" type="hidden" value="<?php  echo $_SESSION['usuario']//var_dump($_SESSION['usuario'])?>">
                                     <h3 id="nombre_user" class="profile-username  text-center text-dark">
-                                        Nombre
+                                       
                                     </h3>
 
-                                    <p id="apellido_user" class="text-muted text-center">Apellido</p>
+                                    <p id="apellido_user" class="text-muted text-center"></p>
 
                                     <ul class="list-group list-group-unbordered mb-3">
                                         <li class="list-group-item">
@@ -81,7 +81,7 @@ if ($_SESSION['rol'] == 1) {
                                     <p id="telefono"class="text-muted">87844571</p>
 
                                     <strong style="color:black">
-                                        <i class="fas fa-map-marker-alt mr-1"></i>Residensia
+                                        <i class="fas fa-map-marker-alt mr-1"></i>Residencia
                                     </strong>
                                     <p id="residencia"class="text-muted">Granada</p>
 

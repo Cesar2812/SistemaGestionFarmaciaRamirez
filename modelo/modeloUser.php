@@ -37,4 +37,19 @@ class Usuario
             die("Error al ejecutar la consulta: " . $e->getMessage());
         }
     }
+    function obtener_datos($id)
+    {
+        try { 
+            $sql = "select * from usuario inner join rol on usuario.id_Usuario=rol.id_Rol and id_usuario=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id));
+            //escribe los campos y datos de la tabla usuario del usuario logueado 
+            $this->objetos = $query->fetchAll();
+            return $this->objetos;
+
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
+        }
+    }
+
 }

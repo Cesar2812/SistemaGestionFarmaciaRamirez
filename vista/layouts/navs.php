@@ -34,7 +34,7 @@
 
 
             <ul class="navbar-nav ml-auto">
-                <a href="../controlador/ControladorDeslogueo.php">Cerrar Sesion</a>
+                <a href="../controlador/ControladorDeslogueo.php"><button class="btn btn-block btn-danger">Cerrar Sesion</button></a>
             </ul>
         </nav>
 
@@ -75,7 +75,7 @@
                             <a href="../vista/edicionUsuarios.php" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Datos Del Usuario
+                                   Editar Datos Del Usuario
                                 </p>
                             </a>
                         </li>
