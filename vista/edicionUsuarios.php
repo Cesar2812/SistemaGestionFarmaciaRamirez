@@ -22,7 +22,7 @@ if ($_SESSION['rol'] == 1) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Datos Del Usuario</h1>
+                        <h1>DATOS DEL USUARIO</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -47,7 +47,7 @@ if ($_SESSION['rol'] == 1) {
                                     <div class="text-center">
                                         <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
                                     </div>
-                                    <input id="id_Usuario" type="" value="<?php  echo $_SESSION['usuario']//var_dump($_SESSION['usuario'])?>">
+                                    <input id="id_Usuario" type="hidden" value="<?php  echo $_SESSION['usuario']//var_dump($_SESSION['usuario'])?>">
                                     <h3 id="nombre_user" class="profile-username  text-center text-dark">
                                         Nombre
                                     </h3>
