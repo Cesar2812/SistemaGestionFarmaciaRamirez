@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
@@ -13,12 +13,15 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="stylesheet" type="text/css" href="css/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <?php
 //se inicia la conexion
 session_start();
+
 //en este condicinal se valida si el campo  usuario con determinado rol esta vacio lo que hace es retornar al controlador y mantenerse sentro del login
 if (!empty($_SESSION['rol'])) {
+
     header('Location: controlador/ControladorLogin.php');
 
 } else {
@@ -61,7 +64,37 @@ if (!empty($_SESSION['rol'])) {
     </div>
 
     <body>
+
+        <script>
+            // Function to handle empty or incorrect login credentials
+            function handleLoginError(errorMessage) {
+                Swal.fire({
+                    position: "top-end",
+                    title: 'Error de Inicio de Sesión',
+                    text: errorMessage,
+                    icon: 'error',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            // Check for empty fields on form submission
+            document.querySelector('form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const username = document.querySelector('input[name="user"]').value;
+                const password = document.querySelector('input[name="pass"]').value;
+
+                if (username === '' || password === '') {
+                    handleLoginError('Por favor, complete todos los campos.');
+                    return;
+                }
+                this.submit();
+
+            });
+        </script>
     </body>
+
     <script src="js/login.js"></script>
 
     </html>

@@ -108,6 +108,14 @@ if ($_SESSION['rol'] == 1) {
 
                                 <div class="card-body">
                                     <form class="form-horizontal">
+
+                                        <div class="form-group row">
+                                            <label for="telefono" class="col-sm-2 col-form-label">Usuario</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" id="nombre_us" class="form-control">
+                                            </div>
+                                        </div>
+
                                         <div class="form-group row">
                                             <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
                                             <div class="col-sm-10">

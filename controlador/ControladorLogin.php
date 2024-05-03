@@ -35,7 +35,7 @@ if (!empty($_SESSION['rol'])) {
             $_SESSION['rol'] = $objeto->id_rol;
             $_SESSION['nombre'] = $objeto->nombre;
             $_SESSION['apellido'] = $objeto->apellido;
-            
+
         }
 
         //validando en base al rol que tenga el usuario para activar las diferentes vistas del sistema 
@@ -50,6 +50,10 @@ if (!empty($_SESSION['rol'])) {
 
         }
     } else {
+
+        // Login failed, set error message and redirect back to login
+        $_SESSION['login_error'] = 'Usuario o contraseña incorrectos.';
+        
         //si no se cumple la condicion se regresa al index osea al loguin 
         header('Location:../index.php');
 
