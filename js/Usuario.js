@@ -26,7 +26,7 @@ $(document).ready(function () {
             telefono += `${usuario.telefono}`;
             residencia += `${usuario.residencia}`;
             Correo += `${usuario.correo}`;
-
+            //estos son templates
             $('#nombre_user').html(nombre);
             $('#apellido_user').html(apellido);
             $('#user_name').html(usuario_);
