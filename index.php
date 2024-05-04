@@ -18,10 +18,8 @@
 <?php
 //se inicia la conexion
 session_start();
-
 //en este condicinal se valida si el campo  usuario con determinado rol esta vacio lo que hace es retornar al controlador y mantenerse sentro del login
 if (!empty($_SESSION['rol'])) {
-
     header('Location: controlador/ControladorLogin.php');
 
 } else {
@@ -64,6 +62,7 @@ if (!empty($_SESSION['rol'])) {
     </div>
 
     <body>
+
 
         <script>
             // Function to handle empty or incorrect login credentials

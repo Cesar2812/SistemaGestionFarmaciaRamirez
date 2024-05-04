@@ -50,10 +50,6 @@ if (!empty($_SESSION['rol'])) {
 
         }
     } else {
-
-        // Login failed, set error message and redirect back to login
-        $_SESSION['login_error'] = 'Usuario o contraseña incorrectos.';
-        
         //si no se cumple la condicion se regresa al index osea al loguin 
         header('Location:../index.php');
 
