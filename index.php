@@ -21,7 +21,7 @@ session_start();
 //en este condicinal se valida si el campo  usuario con determinado rol esta vacio lo que hace es retornar al controlador y mantenerse sentro del login
 if (!empty($_SESSION['rol'])) {
     header('Location: controlador/ControladorLogin.php');
-
+    
 } else {
     //en este caso si no ocurre lo anterior se muestra el formulario de inicio de sesion
     session_destroy();
@@ -56,14 +56,11 @@ if (!empty($_SESSION['rol'])) {
                 </div>
                 <a href=>¿Olvido su Contraseña?</a>
                 <input type="submit" class="btn" value="Iniciar Sesion">
-
             </form>
         </div>
     </div>
 
     <body>
-
-
         <script>
             // Function to handle empty or incorrect login credentials
             function handleLoginError(errorMessage) {
@@ -77,26 +74,35 @@ if (!empty($_SESSION['rol'])) {
                 });
             }
 
+            /* Swal.fire({
+                 position: 'center',
+                 title: 'Error de Inicio de Sesión',
+                 text: 'Usuario o contraseña incorrectos',
+                 icon: 'error',
+                 confirmButtonColor: '#d33',
+                 confirmButtonText: 'OK'
+             });*/
+
             // Check for empty fields on form submission
             document.querySelector('form').addEventListener('submit', function (event) {
                 event.preventDefault();
+
 
                 const username = document.querySelector('input[name="user"]').value;
                 const password = document.querySelector('input[name="pass"]').value;
 
                 if (username === '' || password === '') {
                     handleLoginError('Por favor, llene todos los campos.');
+
                     return;
                 }
                 this.submit();
-
             });
         </script>
     </body>
-
     <script src="js/login.js"></script>
-
     </html>
+    
     <?php
 }
 ?>
