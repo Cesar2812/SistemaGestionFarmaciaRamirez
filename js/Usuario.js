@@ -40,7 +40,7 @@ $(document).ready(function () {
             $('#correo').html(Correo);
         })
 
-    
+
     }
 
 
@@ -57,21 +57,21 @@ $(document).ready(function () {
             $('#residenci').val(usuario.residencia);
             $('#email').val(usuario.correo);
         });
-  
+
     });
 
 
     //capturando los datos de los input del formulario editar usuario para que los lleve a la consulta a realizarse en la base de datos 
     $('#form-usuario').submit(e => {
-         
-        if (edit==true) {
+
+        if (edit == true) {
             let admin = $('#admin').val();
             let tele = $('#tele').val();
             let residenci = $('#residenci').val();
             let email = $('#email').val();
             funcion = 'editar_usuario';
             $.post('../controlador/ControladorUsuario.php', { funcion, id_Usuario, admin, tele, residenci, email }, (response) => {
-                if (response='Editado') {
+                if (response = 'Editado') {
                     $('#Editado').hide('slow');
                     $('#Editado').show(1000);
                     $('#Editado').hide(2000);
@@ -87,14 +87,41 @@ $(document).ready(function () {
             $('#NoEditado').hide(2000);
             $('#form-usuario').trigger('reset');
 
-            
+
         }
         e.preventDefault();
     });
 
 
-    //implementacion de cambiar contraseña 
-    
+    //implementacion de cambiar contraseña al cual le estoy diciendo que cuando se haga click en el boton guardar se ejecute una funcion 
+
+    $('#form-pass').submit(e => {
+        let oldpass = $('#old-pass').val();
+        let newpass = $('#new-pass').val();
+
+        funcion = 'cambiar_contraseña';
+
+        $.post('../controlador/ControladorUsuario.php', { id_Usuario, funcion, oldpass, newpass }, (response) => {
+            console.log(response);
+            if (response == 'Cambio Realizado con Exito') {
+                $('#update').hide('slow');
+                $('#update').show(1000);
+                $('#update').hide(2000);
+                $('#form-pass').trigger('reset');
+            } else {
+                $('#noUpdate').hide('slow');
+                $('#noUpdate').show(1000);
+                $('#noUpdate').hide(2000);
+                $('#form-pass').trigger('reset');
+            }
+        });
+        console.log(oldpass + newpass);
+        e.preventDefault();
+
+
+
+
+    });
 
 
 
@@ -102,6 +129,7 @@ $(document).ready(function () {
 
 
 
-   
+
+
 
 })

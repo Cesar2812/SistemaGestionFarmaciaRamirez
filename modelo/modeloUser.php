@@ -41,7 +41,7 @@ class Usuario
     }
 
 
-
+    //funcion para obtener datos y ponerlos en los card
     function obtener_datos($id)
     {
         try { 
@@ -57,7 +57,7 @@ class Usuario
         }
     }
 
-
+    //funcion para editar usuario
     function editar($idUser, $user, $telefono, $residencia, $correo){
 
         try{
@@ -70,6 +70,33 @@ class Usuario
         }
 
     }
+
+
+    //metodo para cambiar contraseña
+    function cambiar_Contra($idUser,$oldpass,$newpass)
+    {
+
+        try {
+            $sql = "select * FROM usuario where id_Usuario=:idUser and pass=:oldpass";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':idUser' => $idUser, ':oldpass' => $oldpass));
+            $this->objetos=$query->fetchAll();
+
+            //validacion si el objeto esta vacio no se encontro la contraseña que se esta poniendo 
+            if(!empty($this->objetos)){
+                $sql = "update usuario set pass=:newpass where id_Usuario=:idUser";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':idUser'=>$idUser,':newpass'=>$newpass));
+                echo 'Cambio Realizado con Exito';
+            }else{
+                echo 'No se Hicieron Cambios';
+            }
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
+        }
+
+    }
+
 
 
 

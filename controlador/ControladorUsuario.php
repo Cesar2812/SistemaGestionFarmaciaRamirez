@@ -6,14 +6,21 @@ $usuario = new Usuario();
 //este metodo busca los datos en la base de datos para tomarlos como un JSON y mandarlos a los card del fromulario
 if ($_POST['funcion'] == 'buscar_Usuario') {
     $json = array();
+    $fecha_actual = new DateTime();
     $usuario->obtener_datos($_POST['dato']);
     foreach ($usuario->objetos as $objeto) {
+        //obteniendo la fecha de la base de datos osea la fecha de nacimiento del usuario 
+        //convierte la edad en un objeto de tiempo 
+        $nacimiento = new DateTime($objeto->edad);
+        //compara la fecha actual con la fecha de nacimiento y hace una pequeña resta 
+        $edad = $nacimiento->diff($fecha_actual);
+        $edad_year = $edad->y;
         //creando un json para obtner los datos de la tabla usuario para que sean cargadas en el formulario 
         $json[] = array(
             'nombre' => $objeto->nombre,
             'apellido' => $objeto->apellido,
             'usuario' => $objeto->usuario,
-            'edad' => $objeto->edad,
+            'edad' => $edad_year,
             'rol' => $objeto->descripcion,
             'telefono' => $objeto->telefono,
             'residencia' => $objeto->residencia,
@@ -24,6 +31,8 @@ if ($_POST['funcion'] == 'buscar_Usuario') {
     $jsonString = json_encode($json[0]);
     echo $jsonString;
 }
+
+
 
 //este metodo toma los datos de las card del formulario y los manda los input para que sean editados
 if ($_POST['funcion'] == 'capturar_datos') {
@@ -56,7 +65,15 @@ if ($_POST['funcion'] == 'editar_usuario') {
     $usuario->editar($idUser,$user,$telefono,$residencia,$correo);
 
     echo 'Editado';
-
-
-
 }
+
+
+//funcion para cambiar contraseña
+if ($_POST['funcion'] == 'cambiar_contraseña') {
+    $idUser = $_POST['id_Usuario'];
+    $oldpass = $_POST['oldpass'];
+    $newpass = $_POST['newpass'];
+
+    $usuario->cambiar_Contra($idUser,$oldpass,$newpass);
+}
+

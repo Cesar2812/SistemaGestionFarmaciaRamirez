@@ -38,7 +38,18 @@ if ($_SESSION['rol'] == 1) {
                         </b>
                     </div>
 
+
+                    <div class="alert alert-success text-center" id="update" style="display:none;">
+                        <span><i class="fas fa-check m-1"></i>Se Cambio la Contraseña Correctamente</span>
+                    </div>
+
+                    <div class="alert alert-danger text-center" id="noUpdate" style="display:none;">
+                        <span><i class="fas fa-times m-1"></i>La Contraseña No es Correcta</span>
+                    </div>
+
                     <form id="form-pass">
+
+
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -47,56 +58,33 @@ if ($_SESSION['rol'] == 1) {
                                 </span>
                             </div>
                             <input id="old-pass" type="password" class="form-control"
-                                placeholder="Ingrese Contraseña Actual" >
+                                placeholder="Ingrese Contraseña Actual">
                         </div>
 
-                         <div class="input-group mb-3">
+                        <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fas fa-lock"></i>
                                 </span>
                             </div>
-                            <input id="new-pass" type="text" class="form-control"
-                                placeholder="Ingrese Contraseña Nueva">
+                            <input id="new-pass" type="text" class="form-control" placeholder="Ingrese Contraseña Nueva">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class=" btn btn-outline-secondary" data-dismiss="modal">
+                                Cerrar
+                            </button>
+                            <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
+                            <button type="submit" class="btn bg-gradient-primary">Guardar</button>
                         </div>
 
 
                     </form>
-
-
-
-
-
-
-
-
-
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn bg-gradient-primary">Guardar</button>
-                </div>
+
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -158,13 +146,6 @@ if ($_SESSION['rol'] == 1) {
 
                                         <button data-toggle="modal" data-target="#change" type="button"
                                             class="btn btn-block btn-outline-warning btn-sm">Cambiar Contraseña</button>
-
-
-
-
-
-
-
                                     </ul>
                                 </div>
                             </div>
@@ -197,6 +178,7 @@ if ($_SESSION['rol'] == 1) {
                         </div>
 
 
+
                         <!--Aca se hace referencia al formulario que esta en medio donde se cargaran los datos para que sean actualizados-->
                         <div class="col-md-9">
                             <div class="card card-info">
@@ -213,7 +195,7 @@ if ($_SESSION['rol'] == 1) {
                                         <span><i class="fas fa-times m-1"></i>Opcion Desabilitada</span>
                                     </div>
 
-
+                                    <!--Formulario de cambio de contraseña-->
                                     <form id='form-usuario' class="form-horizontal">
 
                                         <div class="form-group row">
@@ -249,7 +231,6 @@ if ($_SESSION['rol'] == 1) {
                                             </div>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
