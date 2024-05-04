@@ -22,6 +22,8 @@ class Usuario
         }
     }
 
+
+
     //metodo loguearse el cual recibe parametros que vienen del controlador de la respectiva clase para ejecutar la consulta sql 
     function loguarse($usuario, $pass)
     {
@@ -37,6 +39,9 @@ class Usuario
             die("Error al ejecutar la consulta: " . $e->getMessage());
         }
     }
+
+
+
     function obtener_datos($id)
     {
         try { 
@@ -52,4 +57,59 @@ class Usuario
         }
     }
 
+
+    function editar($idUser, $user, $telefono, $residencia, $correo){
+
+        try{
+            $sql = "UPDATE usuario SET usuario=:user, Telefono=:telefono, Residencia=:residencia, Correo=:correo WHERE id_Usuario=:idUser";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':idUser' =>$idUser,':user'=>$user,':telefono'=>$telefono,':residencia'=>$residencia,':correo'=>$correo));
+
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+

@@ -74,7 +74,7 @@ if (!empty($_SESSION['rol'])) {
                 });
             }
 
-            /* Swal.fire({
+             /*Swal.fire({
                  position: 'center',
                  title: 'Error de Inicio de Sesión',
                  text: 'Usuario o contraseña incorrectos',

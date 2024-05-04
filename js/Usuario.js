@@ -1,10 +1,13 @@
 $(document).ready(function () {
     var funcion = '';
     var id_Usuario = $('#id_Usuario').val();
+    var edit = false;
     console.log(id_Usuario);
 
     buscar_Usuario(id_Usuario);
 
+
+    //esta funcion toma los datos y les quita el fromato JSON para pasarlos a las card
     function buscar_Usuario(dato) {
         funcion = 'buscar_Usuario';
         $.post("../controlador/ControladorUsuario.php", { dato, funcion }, (response) => {
@@ -37,5 +40,68 @@ $(document).ready(function () {
             $('#correo').html(Correo);
         })
 
+    
     }
+
+
+    //evento del boton editar para ejecutar eventos de click y cargue los datos de las card del formulario en los input para que sean editados
+    $(document).on('click', '.edit', (e) => {
+        funcion = 'capturar_datos';
+        edit = true;
+        $.post('../controlador/ControladorUsuario.php', { funcion, id_Usuario }, (response) => {
+            console.log(response);
+            //quitando el JSON para pasarlos al los inputs de HTML
+            const usuario = JSON.parse(response);
+            $('#admin').val(usuario.usuario);
+            $('#tele').val(usuario.telefono);
+            $('#residenci').val(usuario.residencia);
+            $('#email').val(usuario.correo);
+        });
+  
+    });
+
+
+    //capturando los datos de los input del formulario editar usuario para que los lleve a la consulta a realizarse en la base de datos 
+    $('#form-usuario').submit(e => {
+         
+        if (edit==true) {
+            let admin = $('#admin').val();
+            let tele = $('#tele').val();
+            let residenci = $('#residenci').val();
+            let email = $('#email').val();
+            funcion = 'editar_usuario';
+            $.post('../controlador/ControladorUsuario.php', { funcion, id_Usuario, admin, tele, residenci, email }, (response) => {
+                if (response='Editado') {
+                    $('#Editado').hide('slow');
+                    $('#Editado').show(1000);
+                    $('#Editado').hide(2000);
+                    $('#form-usuario').trigger('reset');
+                }
+                edit = false;
+                buscar_Usuario(id_Usuario)
+            });
+
+        } else {
+            $('#NoEditado').hide('slow');
+            $('#NoEditado').show(1000);
+            $('#NoEditado').hide(2000);
+            $('#form-usuario').trigger('reset');
+
+            
+        }
+        e.preventDefault();
+    });
+
+
+    //implementacion de cambiar contraseña 
+    
+
+
+
+
+
+
+
+   
+
 })

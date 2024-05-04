@@ -14,6 +14,92 @@ if ($_SESSION['rol'] == 1) {
     <?php
     include_once 'layouts/navs.php';
     ?>
+
+    <!-- Modal para cambiar contraseña  -->
+    <div class="modal fade" id="change" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="exampleModalLabel">Cambiar Contraseña</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                    </div>
+
+                    <div class="text-center">
+                        <b>
+                            <?php
+                            echo $_SESSION['nombre'];
+                            ?>
+                        </b>
+                    </div>
+
+                    <form id="form-pass">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-unlock-alt"></i>
+                                </span>
+                            </div>
+                            <input id="old-pass" type="password" class="form-control"
+                                placeholder="Ingrese Contraseña Actual" >
+                        </div>
+
+                         <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                            <input id="new-pass" type="text" class="form-control"
+                                placeholder="Ingrese Contraseña Nueva">
+                        </div>
+
+
+                    </form>
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Contenido de la Pagina -->
     <div class="content-wrapper">
 
@@ -47,26 +133,38 @@ if ($_SESSION['rol'] == 1) {
                                     <div class="text-center">
                                         <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
                                     </div>
-                                    <input id="id_Usuario" type="hidden" value="<?php  echo $_SESSION['usuario']//var_dump($_SESSION['usuario'])?>">
+                                    <input id="id_Usuario" type="hidden"
+                                        value="<?php echo $_SESSION['usuario']//var_dump($_SESSION['usuario']) ?>">
                                     <h3 id="nombre_user" class="profile-username  text-center text-dark">
-                                       
+
                                     </h3>
 
                                     <p id="apellido_user" class="text-muted text-center"></p>
 
                                     <ul class="list-group list-group-unbordered mb-3">
                                         <li class="list-group-item">
-                                            <b style="color:black">Nombre De Usuario</b><a id="user_name" class="float-right">12</a>
+                                            <b style="color:black">Nombre De Usuario</b><a id="user_name"
+                                                class="float-right">12</a>
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b style="color:black">Edad</b><a id="edad"class="float-right">12</a>
+                                            <b style="color:black">Edad</b><a id="edad" class="float-right">12</a>
                                         </li>
 
                                         <li class="list-group-item">
                                             <b style="color:black">Rol De Usuario</b><span id="rol"
                                                 class=" float-right badge badge-success">Administrador</span>
                                         </li>
+
+                                        <button data-toggle="modal" data-target="#change" type="button"
+                                            class="btn btn-block btn-outline-warning btn-sm">Cambiar Contraseña</button>
+
+
+
+
+
+
+
                                     </ul>
                                 </div>
                             </div>
@@ -78,19 +176,19 @@ if ($_SESSION['rol'] == 1) {
                                     <strong style="color:black">
                                         <i class="fa fa-phone mr-1"></i>Telefono
                                     </strong>
-                                    <p id="telefono"class="text-muted">87844571</p>
+                                    <p id="telefono" class="text-muted">87844571</p>
 
                                     <strong style="color:black">
                                         <i class="fas fa-map-marker-alt mr-1"></i>Residencia
                                     </strong>
-                                    <p id="residencia"class="text-muted">Granada</p>
+                                    <p id="residencia" class="text-muted">Granada</p>
 
                                     <strong style="color:black">
                                         <i class="fa fa-envelope"></i> Correo
                                     </strong>
                                     <p id="correo" class="text-muted">admon_faramirez@gamil.com</p>
 
-                                    <button class="btn btn-block btn-secondary">Editar</button>
+                                    <button class="edit btn btn-block btn-secondary">Editar</button>
                                 </div>
                                 <div class="card-footer">
                                     <p class="text-muted">Click Si Desea Editar</p>
@@ -107,38 +205,47 @@ if ($_SESSION['rol'] == 1) {
                                 </div>
 
                                 <div class="card-body">
-                                    <form class="form-horizontal">
+                                    <div class="alert alert-success text-center" id="Editado" style="display:none;">
+                                        <span><i class="fas fa-check m-1"></i>Editado Correctamente</span>
+                                    </div>
+
+                                    <div class="alert alert-danger text-center" id="NoEditado" style="display:none;">
+                                        <span><i class="fas fa-times m-1"></i>Opcion Desabilitada</span>
+                                    </div>
+
+
+                                    <form id='form-usuario' class="form-horizontal">
 
                                         <div class="form-group row">
                                             <label for="telefono" class="col-sm-2 col-form-label">Usuario</label>
                                             <div class="col-sm-10">
-                                                <input type="text" id="nombre_us" class="form-control">
+                                                <input type="text" id="admin" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="telefono" class="col-sm-2 col-form-label">Telefono</label>
                                             <div class="col-sm-10">
-                                                <input type="tel" id="telefono" class="form-control">
+                                                <input type="tel" id="tele" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="residencia" class="col-sm-2 col-form-label">Residencia</label>
                                             <div class="col-sm-10">
-                                                <input type="text" id="residencia" class="form-control">
+                                                <input type="text" id="residenci" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="correo" class="col-sm-2 col-form-label">Correo</label>
                                             <div class="col-sm-10">
-                                                <input type="email" id="correo" class="form-control">
+                                                <input type="text" id="email" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class=" offset-sm-2 col-sm-10 float-right">
-                                                <button class="btn btn-block btn-outline-primary">Guardar</button>
+                                                <button class="btn btn-block btn-outline-primary">Guardar </button>
                                             </div>
                                         </div>
                                     </form>
@@ -160,5 +267,3 @@ if ($_SESSION['rol'] == 1) {
 ?>
 
 <script src="../js/Usuario.js"></script>
-
-
