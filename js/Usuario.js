@@ -8,6 +8,7 @@ $(document).ready(function () {
 
 
     //esta funcion toma los datos y les quita el fromato JSON para pasarlos a las card
+    //evento para pasar todo a los card
     function buscar_Usuario(dato) {
         funcion = 'buscar_Usuario';
         $.post("../controlador/ControladorUsuario.php", { dato, funcion }, (response) => {
@@ -51,6 +52,7 @@ $(document).ready(function () {
 
 
     //evento del boton editar para ejecutar eventos de click y cargue los datos de las card del formulario en los input para que sean editados
+    //evento para cargar los datos de los card a los inputs para la edicion
     $(document).on('click', '.edit', (e) => {
         funcion = 'capturar_datos';
         edit = true;
@@ -67,7 +69,8 @@ $(document).ready(function () {
     });
 
 
-    //capturando los datos de los input del formulario editar usuario para que los lleve a la consulta a realizarse en la base de datos 
+    //capturando los datos de los input del formulario editar usuario para que los lleve a la consulta a realizarse en la base de datos
+    //evento para editar datos del usuario
     $('#form-usuario').submit(e => {
 
         if (edit == true) {
@@ -100,7 +103,7 @@ $(document).ready(function () {
 
 
     //implementacion de cambiar contraseña al cual le estoy diciendo que cuando se haga click en el boton guardar se ejecute una funcion 
-
+    //evento para cambiar contraseña
     $('#form-pass').submit(e => {
         let oldpass = $('#old-pass').val();
         let newpass = $('#new-pass').val();
@@ -131,6 +134,9 @@ $(document).ready(function () {
         //reinicia el formulario osea lo limpia 
         e.preventDefault();
     });
+
+
+
 
     //evento para cambiar foto
     $("#form-foto").submit(e => {
@@ -166,11 +172,9 @@ $(document).ready(function () {
                 $('#form-foto').trigger('reset');
 
             }
-
         });
         e.preventDefault();
        
-
     })
     
 
