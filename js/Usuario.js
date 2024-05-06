@@ -111,9 +111,13 @@ $(document).ready(function () {
             console.log(response);
             //invocando a los alert para cuando se ralice el cambio de contraseña de forma correcta 
             if (response == 'Cambio Realizado con Exito') {
-                $('#update').hide('slow');
-                $('#update').show(1000);
-                $('#update').hide(2000);
+                Swal.fire({
+                    position: "Center",
+                    icon: "success",
+                    title: "Cambio Realizado Exitosamente",
+                    showConfirmButton: false,
+                    timer: 1515
+                });
                 $('#form-pass').trigger('reset');
             } else {
                 //si se pone mal la contraseña se activara el Alert 
