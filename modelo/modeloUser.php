@@ -98,6 +98,30 @@ class Usuario
     }
 
 
+    //metodo para cambiar iamgen de perfil del usuario
+    function cambiar_foto($id_usuario, $nombre)
+    {
+        try {
+            $sql = "select foto from usuario where id_Usuario=:id_usuario";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_usuario' => $id_usuario));
+            $this->objetos = $query->fetchAll();
+
+
+            $sql = "update usuario set foto=:nombre where id_Usuario=:id_usuario";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_usuario' => $id_usuario,':nombre'=>$nombre));
+            return $this->objetos;
+
+            
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
+        }
+
+    }
+
+
+
 
 
 

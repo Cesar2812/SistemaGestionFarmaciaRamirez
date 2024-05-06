@@ -38,6 +38,12 @@ $(document).ready(function () {
             $('#telefono').html(telefono);
             $('#residencia').html(residencia);
             $('#correo').html(Correo);
+
+            $('#foto-card').attr('src', usuario.foto);
+            $('#foto-modal-chan').attr('src', usuario.foto);
+            $('#foto-contraseña').attr('src', usuario.foto);
+            $('#usuario-navb').attr('src', usuario.foto);
+
         })
 
 
@@ -103,12 +109,14 @@ $(document).ready(function () {
 
         $.post('../controlador/ControladorUsuario.php', { id_Usuario, funcion, oldpass, newpass }, (response) => {
             console.log(response);
+            //invocando a los alert para cuando se ralice el cambio de contraseña de forma correcta 
             if (response == 'Cambio Realizado con Exito') {
                 $('#update').hide('slow');
                 $('#update').show(1000);
                 $('#update').hide(2000);
                 $('#form-pass').trigger('reset');
             } else {
+                //si se pone mal la contraseña se activara el Alert 
                 $('#noUpdate').hide('slow');
                 $('#noUpdate').show(1000);
                 $('#noUpdate').hide(2000);
@@ -116,20 +124,72 @@ $(document).ready(function () {
             }
         });
         console.log(oldpass + newpass);
+        //reinicia el formulario osea lo limpia 
         e.preventDefault();
-
-
-
-
     });
 
+    //evento para cambiar foto
+    $("#form-foto").submit(e => {
+        let formdata = new FormData($("#form-foto")[0]);
 
+        $.ajax({
+            url: '../controlador/ControladorUsuario.php',
+            type: 'POST',
+            data: formdata,
+            cache: false,
+            processData: false,
+            contentType: false
+        }).done(function (response) {
+            console.log(response);
+            const json = JSON.parse(response);
 
+            if (json.alert == 'edit') {
+                Swal.fire({
+                    position: "Center",
+                    icon: "success",
+                    title: "Cambio Realizado Exitosamente",
+                    showConfirmButton: false,
+                    timer: 1515
+                });
+                $('#foto-modal-chan').attr('src', json.ruta);
+                $('#form-foto').trigger('reset');
+                buscar_Usuario(id_Usuario);
 
+            } else {
+                $('#noEdit').hide('slow');
+                $('#noEdit').show(1000);
+                $('#noEdit').hide(2000);
+                $('#form-foto').trigger('reset');
 
+            }
 
+        });
+        e.preventDefault();
+       
 
-
-
+    })
+    
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

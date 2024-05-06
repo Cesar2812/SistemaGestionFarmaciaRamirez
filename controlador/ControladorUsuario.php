@@ -2,6 +2,8 @@
 include_once '../modelo/modeloUser.php';
 
 $usuario = new Usuario();
+session_start();
+$id_usuario = $_SESSION['usuario'];
 
 //este metodo busca los datos en la base de datos para tomarlos como un JSON y mandarlos a los card del fromulario
 if ($_POST['funcion'] == 'buscar_Usuario') {
@@ -24,7 +26,8 @@ if ($_POST['funcion'] == 'buscar_Usuario') {
             'rol' => $objeto->descripcion,
             'telefono' => $objeto->telefono,
             'residencia' => $objeto->residencia,
-            'correo' => $objeto->correo
+            'correo' => $objeto->correo,
+            'foto'=>'../img/'.$objeto->foto
             //esto toma datos desde la base de datos
         );
     }
@@ -75,5 +78,44 @@ if ($_POST['funcion'] == 'cambiar_contraseña') {
     $newpass = $_POST['newpass'];
 
     $usuario->cambiar_Contra($idUser,$oldpass,$newpass);
+}
+
+
+
+
+//funcion para cambiar foto de perfil
+if ($_POST['funcion'] == 'cambiarfoto') {
+    if(($_FILES['foto']['type']=='image/jpeg')|| ($_FILES['foto']['type'] == 'image/png')|| ($_FILES['foto']['type'] == 'image/gif')){
+        $nombre = uniqid() . '-' . $_FILES['foto']['name'];
+        $ruta = '../img/' . $nombre;
+        move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
+        $usuario->cambiar_foto($id_usuario,$nombre);
+
+        foreach($usuario->objetos as $objeto){
+            unlink('../img/' . $objeto->foto);
+        }
+        //devolviendo imagen en un json para actualizarlas en el formulario
+
+        $json=array();
+        $json[] = array(
+            'ruta'=>$ruta,
+            'alert'=>'edit'
+        );
+
+        $jsonString = json_encode($json[0]);
+        echo $jsonString;
+    }
+    else{
+        $json = array();
+        $json[] = array(
+            'alert' => 'noedit'
+        );
+
+        $jsonString = json_encode($json[0]);
+        echo $jsonString;
+
+
+    }
+   
 }
 

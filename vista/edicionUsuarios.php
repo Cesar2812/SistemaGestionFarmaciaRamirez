@@ -27,7 +27,7 @@ if ($_SESSION['rol'] == 1) {
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                        <img id="foto-contraseña" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
                     </div>
 
                     <div class="text-center">
@@ -88,6 +88,88 @@ if ($_SESSION['rol'] == 1) {
 
 
 
+
+
+    <!-- Modal para cambiar foto  -->
+    <div class="modal fade" id="cambioFoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="exampleModalLabel">Cambiar Foto De Perfil</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img id="foto-modal-chan" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                    </div>
+
+                    <div class="text-center">
+                        <b>
+                            <?php
+                            echo $_SESSION['nombre'];
+                            ?>
+                        </b>
+                    </div>
+
+
+                    <div class="alert alert-danger text-center" id="noEdit" style="display:none;">
+                        <span><i class="fas fa-times m-1"></i>Formato de Imagen Incorrecto</span>
+                    </div>
+
+                    <form id="form-foto" enctype="multipart/form-data">
+
+                        <div class="input-group mb-3 ml-5 mt-2">
+                            <input type="file" name="foto" class="input-group">
+                            <input type="hidden" name="funcion" value="cambiarfoto">
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class=" btn btn-outline-secondary" data-dismiss="modal">
+                                Cerrar
+                            </button>
+                            <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
+                            <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Contenido de la Pagina -->
     <div class="content-wrapper">
 
@@ -110,6 +192,8 @@ if ($_SESSION['rol'] == 1) {
 
 
 
+
+
         <!--Contenido de los Datos del Usuario dentro de los card-->
         <section>
             <div class="content">
@@ -119,8 +203,25 @@ if ($_SESSION['rol'] == 1) {
                             <div class="card card-info card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                        <img src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                                        <img id="foto-card" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
                                     </div>
+
+                                    <div class="text-center mt-2">
+                                        <button type="button" data-toggle="modal" data-target="#cambioFoto"
+                                            class="btn btn-primary btn-sm">Cambiar Foto De Perfil</button>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
                                     <input id="id_Usuario" type="hidden"
                                         value="<?php echo $_SESSION['usuario']//var_dump($_SESSION['usuario']) ?>">
                                     <h3 id="nombre_user" class="profile-username  text-center text-dark">
