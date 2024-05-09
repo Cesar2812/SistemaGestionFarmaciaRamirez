@@ -82,9 +82,10 @@
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="../vista/edicionUsuarios.php" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                            <a href="../vista/nuevoUsuario.php" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Nuevo Usuario
                                 </p>
