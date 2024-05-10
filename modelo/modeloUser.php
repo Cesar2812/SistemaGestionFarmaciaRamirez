@@ -28,7 +28,7 @@ class Usuario
     function loguarse($usuario, $pass)
     {
         try {
-            $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.id_Usuario = rol.id_Rol WHERE usuario=:usuario AND pass =:pass";
+            $sql = "SELECT * FROM usuario INNER JOIN rol ON usuario.id_rol = rol.id_Rol WHERE usuario=:usuario AND pass =:pass";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':usuario' => $usuario, ':pass' => $pass));
             //escribe los campos y datos de la tabla usuario del usuario logueado 
@@ -45,7 +45,9 @@ class Usuario
     function obtener_datos($id)
     {
         try {
-            $sql = "select * from usuario inner join rol on usuario.id_Usuario=rol.id_Rol and id_usuario=:id";
+            $sql = "select * from usuario
+                    join rol on usuario.id_rol=rol.id_Rol
+                     and id_Usuario=:id";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':id' => $id));
             //escribe los campos y datos de la tabla usuario del usuario logueado 
@@ -57,6 +59,8 @@ class Usuario
         }
     }
 
+
+    
     //funcion para editar usuario
     function editar($idUser, $user, $telefono, $residencia, $correo)
     {
@@ -120,7 +124,7 @@ class Usuario
         }
 
     }
-    
+
     //metodo para buscar usuario
     function buscar()
     {

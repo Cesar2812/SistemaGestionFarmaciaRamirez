@@ -6,7 +6,7 @@
 //metodo para iniciar la sesion
 session_start();
 //con este condicional se toma el rol del usuario que se ha logueado 
-if ($_SESSION['rol'] == 1) {
+if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
     //incluyendo el archivo header del Layout para usarse en todos los formularios de forma global
     include_once 'layouts/header.php';
     ?>
@@ -241,7 +241,8 @@ if ($_SESSION['rol'] == 1) {
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b style="color:black">Rol De Usuario</b><span id="rol"
+                                            <b style="color:black">Rol De Usuario</b>
+                                             <span id="rol"
                                                 class=" float-right badge badge-success">Administrador</span>
                                         </li>
 

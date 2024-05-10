@@ -20,6 +20,10 @@ if (!empty($_SESSION['rol'])) {
             header('Location: ../vista/facturador.php');
             break;
 
+        case 3:
+            header('Location: ../vista/administrador.php');
+            break;
+
     }
 } else {
     //si no se cumple lo anterior quiere decir que el usuario y la contraseña fueron correctas y accede a la pagina correspodiente en base al rol del usuario que se haya logueado 
@@ -46,6 +50,10 @@ if (!empty($_SESSION['rol'])) {
 
             case 2:
                 header('Location: ../vista/facturador.php');
+                break;
+
+            case 3:
+                header('Location: ../vista/administrador.php');
                 break;
 
         }

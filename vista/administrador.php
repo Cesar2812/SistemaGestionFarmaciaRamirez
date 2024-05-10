@@ -5,7 +5,7 @@
 //iniciando la sesion 
 session_start();
 //validando si se cumple la condicion de que el usuario logueado tenga el rol de administrador para que el formulario pueda cargar 
-if ($_SESSION['rol'] == 1) {
+if ($_SESSION['rol'] === 1||$_SESSION['rol']===3) {
     //incluyendo el archivo header del Layout para usarse en todos los formularios de forma global
     include_once 'layouts/header.php';
     ?>

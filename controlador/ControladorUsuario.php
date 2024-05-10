@@ -111,6 +111,8 @@ if ($_POST['funcion'] == 'cambiarfoto') {
     }
 }
 
+
+
 //buscar Usuario 
 if ($_POST['funcion'] == 'buscar_user_adm') {
     $json = array();
