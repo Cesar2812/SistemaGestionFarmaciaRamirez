@@ -35,8 +35,6 @@ if ($_POST['funcion'] == 'buscar_Usuario') {
     echo $jsonString;
 }
 
-
-
 //este metodo toma los datos de las card del formulario y los manda los input para que sean editados
 if ($_POST['funcion'] == 'capturar_datos') {
     $json = array();
@@ -70,7 +68,6 @@ if ($_POST['funcion'] == 'editar_usuario') {
     echo 'Editado';
 }
 
-
 //funcion para cambiar contraseña
 if ($_POST['funcion'] == 'cambiar_contraseña') {
     $idUser = $_POST['id_Usuario'];
@@ -79,8 +76,6 @@ if ($_POST['funcion'] == 'cambiar_contraseña') {
 
     $usuario->cambiar_Contra($idUser,$oldpass,$newpass);
 }
-
-
 
 
 //funcion para cambiar foto de perfil
@@ -113,9 +108,37 @@ if ($_POST['funcion'] == 'cambiarfoto') {
 
         $jsonString = json_encode($json[0]);
         echo $jsonString;
-
-
     }
-   
 }
+
+//buscar Usuario 
+if ($_POST['funcion'] == 'buscar_user_adm') {
+    $json = array();
+    $fecha_actual = new DateTime();
+    $usuario->buscar();
+    foreach ($usuario->objetos as $objeto) {
+        //obteniendo la fecha de la base de datos osea la fecha de nacimiento del usuario 
+        //convierte la edad en un objeto de tiempo 
+        $nacimiento = new DateTime($objeto->edad);
+        //compara la fecha actual con la fecha de nacimiento y hace una pequeña resta 
+        $edad = $nacimiento->diff($fecha_actual);
+        $edad_year = $edad->y;
+        //creando un json para obtner los datos de la tabla usuario para que sean cargadas en el formulario 
+        $json[] = array(
+            'nombre' => $objeto->nombre,
+            'apellido' => $objeto->apellido,
+            'usuario' => $objeto->usuario,
+            'edad' => $edad_year,
+            'rol' => $objeto->descripcion,
+            'telefono' => $objeto->telefono,
+            'residencia' => $objeto->residencia,
+            'correo' => $objeto->correo,
+            'foto' => '../img/' . $objeto->foto
+            //esto toma datos desde la base de datos
+        );
+    }
+    $jsonString = json_encode($json);
+    echo $jsonString;
+}
+
 

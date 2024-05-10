@@ -1,6 +1,4 @@
 <?php
-
-
 //ESTE ES EL FORMULARIO PARA INGRESAR USUARIOS AL SISTEMA
 
 //metodo para iniciar la sesion
@@ -64,7 +62,8 @@ if ($_SESSION['rol'] == 1) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-outline-secondary float-right m-1"  data-dismiss="modal">
+                                <button type="button" class=" btn btn-outline-secondary float-right m-1"
+                                    data-dismiss="modal">
                                     Cerrar
                                 </button>
                             </div>
@@ -74,30 +73,6 @@ if ($_SESSION['rol'] == 1) {
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -124,25 +99,23 @@ if ($_SESSION['rol'] == 1) {
             </div>
         </section>
 
-
-
-
-
-        <!--Contenido-->
+        <!--Buscador-->
         <section>
             <div class="container-fluid">
                 <div class="card card-info">
                     <div class="card-header">
                         <h3 class="card-title">Buscar Usuario</h3>
                         <div class="input-group">
-                            <input type="text" id="buscar" class="form-control float-left"
+                            <input type="text" id="buscarUser" class="form-control float-left"
                                 placeholder="Ingrese El Nombre Del Usuario">
                             <div class="input-group-append"><button class="btn btn-default"><i
                                         class="fas fa-search"></i></button></div>
                         </div>
 
                     </div>
-                    <div class="card-body">
+                    <div  class="card-body">
+                        <div id="card-usuarios"class="row d-flex-aling-items-stretch">
+                        </div>
 
                     </div>
                     <div class="card-footer">
@@ -162,4 +135,4 @@ if ($_SESSION['rol'] == 1) {
 }
 ?>
 
-<script src="../js/Usuario.js"></script>
+<script src="../js/GestionUsuario.js"></script>
