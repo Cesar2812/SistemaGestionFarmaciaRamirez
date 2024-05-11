@@ -60,7 +60,7 @@ class Usuario
     }
 
 
-    
+
     //funcion para editar usuario
     function editar($idUser, $user, $telefono, $residencia, $correo)
     {
@@ -128,26 +128,95 @@ class Usuario
     //metodo para buscar usuario
     function buscar()
     {
-        if (!empty($_POST['consulta'])) {
-            $consulta = $_POST['consulta'];
-            $sql = "SELECT * FROM usuario s
+        try {
+            if (!empty($_POST['consulta'])) {
+                $consulta = $_POST['consulta'];
+                $sql = "SELECT * FROM usuario s
                        INNER JOIN rol r ON  s.id_rol = r.id_Rol
                       WHERE s.nombre like :consulta";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':consulta' => "%$consulta%"));
-            $this->objetos = $query->fetchAll();
-            return $this->objetos;
-        } else {
-            $sql = "SELECT * FROM usuario u
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':consulta' => "%$consulta%"));
+                $this->objetos = $query->fetchAll();
+                return $this->objetos;
+            } else {
+                $sql = "SELECT * FROM usuario u
                     INNER JOIN rol r ON u.id_rol = r.id_Rol
                     WHERE u.nombre != '' ORDER BY u.id_Usuario";
-            $query = $this->acceso->prepare($sql);
-            $query->execute();
-            $this->objetos = $query->fetchAll();
-            return $this->objetos;
+                $query = $this->acceso->prepare($sql);
+                $query->execute();
+                $this->objetos = $query->fetchAll();
+                return $this->objetos;
+            }
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
+
         }
+
     }
+
+    //funcion para crear usuario
+    function crear_usuario($nombre, $apellido, $edad, $nombre_usuario, $pass, $tipo, $foto)
+    {
+        try{
+            //corroborandi si existe un usuario con el mismo nombre de usuario
+            $sql = "Select id_Usuario from usuario where usuario=:nombre_usuario";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':nombre_usuario' => $nombre_usuario));
+            $this->objetos=$query->fetchAll();
+
+            //validacion de que el nombre no sea igual
+            if(!empty($this->objetos)){
+                echo 'No agregado';
+
+            }else{
+                $sql = "insert into usuario(nombre,apellido,edad,usuario,pass,id_rol,foto)
+                VALUES(:nombre,:apellido,:edad,:nombre_usuario,:pass,:tipo,:foto)";
+                $query = $this->acceso->prepare($sql);
+                $query->execute(array(':nombre'=>$nombre,':apellido'=>$apellido,':edad'=>$edad,':nombre_usuario'=>$nombre_usuario,':pass'=>$pass,':tipo'=>$tipo,':foto'=>$foto));
+                echo 'agregado';
+
+            }
+
+        }catch(PDOException $ed){
+            die("Error al ejecutar la consulta: " . $ed->getMessage());
+        }
+       
+    }
+
+    //funcion para ascender usuario
+    function ascender($pass,$id_ascendido, $id_usuario){
+        $sql = "select id_Usuario from usuario where id_Usuario=:id_usuario
+                and pass=:pass";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
+        $this->objetos = $query->fetchAll();
+
+        if(!empty($this->objetos)){
+            $tipo_user = 1;
+            $sql = "update usuario set id_rol=:tipo
+                     where id_Usuario=:id_ascendido";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_ascendido'=>$id_ascendido, ':tipo' => $tipo_user));
+            echo 'ascendido';
+            
+        }else{
+            echo 'no ascendido';
+        }
+
+
+
+    }
+
+
+
+
+
+
+
 }
+
+
+
 
 
 

@@ -27,7 +27,7 @@ if ($_POST['funcion'] == 'buscar_Usuario') {
             'telefono' => $objeto->telefono,
             'residencia' => $objeto->residencia,
             'correo' => $objeto->correo,
-            'foto'=>'../img/'.$objeto->foto
+            'foto' => '../img/' . $objeto->foto
             //esto toma datos desde la base de datos
         );
     }
@@ -58,12 +58,12 @@ if ($_POST['funcion'] == 'capturar_datos') {
 //este metodo toma los datos cargados en los inputs ya una vez editados para mandarlos a la data
 if ($_POST['funcion'] == 'editar_usuario') {
     $idUser = $_POST['id_Usuario'];
-    $user=$_POST['admin'];
+    $user = $_POST['admin'];
     $telefono = $_POST['tele'];
     $residencia = $_POST['residenci'];
     $correo = $_POST['email'];
 
-    $usuario->editar($idUser,$user,$telefono,$residencia,$correo);
+    $usuario->editar($idUser, $user, $telefono, $residencia, $correo);
 
     echo 'Editado';
 }
@@ -74,33 +74,32 @@ if ($_POST['funcion'] == 'cambiar_contraseña') {
     $oldpass = $_POST['oldpass'];
     $newpass = $_POST['newpass'];
 
-    $usuario->cambiar_Contra($idUser,$oldpass,$newpass);
+    $usuario->cambiar_Contra($idUser, $oldpass, $newpass);
 }
 
 
 //funcion para cambiar foto de perfil
 if ($_POST['funcion'] == 'cambiarfoto') {
-    if(($_FILES['foto']['type']=='image/jpeg')|| ($_FILES['foto']['type'] == 'image/png')|| ($_FILES['foto']['type'] == 'image/gif')){
+    if (($_FILES['foto']['type'] == 'image/jpeg') || ($_FILES['foto']['type'] == 'image/png') || ($_FILES['foto']['type'] == 'image/gif')) {
         $nombre = uniqid() . '-' . $_FILES['foto']['name'];
         $ruta = '../img/' . $nombre;
         move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
-        $usuario->cambiar_foto($id_usuario,$nombre);
+        $usuario->cambiar_foto($id_usuario, $nombre);
 
-        foreach($usuario->objetos as $objeto){
+        foreach ($usuario->objetos as $objeto) {
             unlink('../img/' . $objeto->foto);
         }
         //devolviendo imagen en un json para actualizarlas en el formulario
 
-        $json=array();
+        $json = array();
         $json[] = array(
-            'ruta'=>$ruta,
-            'alert'=>'edit'
+            'ruta' => $ruta,
+            'alert' => 'edit'
         );
 
         $jsonString = json_encode($json[0]);
         echo $jsonString;
-    }
-    else{
+    } else {
         $json = array();
         $json[] = array(
             'alert' => 'noedit'
@@ -127,6 +126,7 @@ if ($_POST['funcion'] == 'buscar_user_adm') {
         $edad_year = $edad->y;
         //creando un json para obtner los datos de la tabla usuario para que sean cargadas en el formulario 
         $json[] = array(
+            'id' => $objeto->id_usuario,
             'nombre' => $objeto->nombre,
             'apellido' => $objeto->apellido,
             'usuario' => $objeto->usuario,
@@ -136,12 +136,37 @@ if ($_POST['funcion'] == 'buscar_user_adm') {
             'residencia' => $objeto->residencia,
             'correo' => $objeto->correo,
             'foto' => '../img/' . $objeto->foto,
-            'tipo_usuario'=>$objeto->id_rol
+            'tipo_usuario' => $objeto->id_rol
             //esto toma datos desde la base de datos
         );
     }
     $jsonString = json_encode($json);
     echo $jsonString;
 }
+
+//evento para crear usuario
+if ($_POST['funcion'] == 'crear_usuario') {
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $edad = $_POST['edad'];
+    $nombre_usuario = $_POST['nombre_usuario'];
+    $pass = $_POST['contraseña'];
+    $tipo = 2;
+    $foto = 'user.png';
+
+    $usuario->crear_usuario($nombre, $apellido, $edad, $nombre_usuario, $pass, $tipo, $foto);
+}
+
+
+
+//evento para ascender de rol al usuario
+if ($_POST['funcion'] == 'ascender') {
+    $pass=$_POST['pass'];
+    $id_ascendido = $_POST['id_usuario'];
+    //creando el metodo ascender usuario
+    $usuario->ascender($pass,$id_ascendido, $id_usuario);
+}
+
+
 
 

@@ -4,7 +4,7 @@
 //metodo para iniciar la sesion
 session_start();
 //con este condicional se toma el rol del usuario que se ha logueado 
-if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
+if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
     //incluyendo el archivo header del Layout para usarse en todos los formularios de forma global
     include_once 'layouts/header.php';
     ?>
@@ -12,6 +12,87 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
     <?php
     include_once 'layouts/navs.php';
     ?>
+
+    <!--Modal Para poner la contraseña y ascender Roles a Facturadores-->
+    <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="exampleModalLabel">Confirmacion De Contraseña</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img id="foto-contraseña" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                    </div>
+
+                    <div class="text-center">
+                        <b>
+                            <?php
+                                echo $_SESSION['nombre'];
+                                ?>
+                        </b>
+                    </div>
+                    <span>
+                        Se Necesita Su Contraseña Para Confirmar
+                    </span>
+
+                    <div class="alert alert-danger text-center" id="noRealizado" style="display:none;">
+                        <span><i class="fas fa-times m-1"></i>La Contraseña No es Correcta</span>
+                    </div>
+
+                    <form id="form-confirmar">
+
+
+
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-unlock-alt"></i>
+                                </span>
+                            </div>
+                            <input id="old-pass" type="password" class="form-control"
+                                placeholder="Ingrese Contraseña Actual">
+
+                                <input type="hidden" id="id_user">
+                                <input type="hidden" id="funcion">
+                        </div>
+
+                        
+
+                        <div class="modal-footer">
+                                <button type="button" class=" btn btn-outline-secondary" data-dismiss="modal">
+                                Cerrar
+                            </button>
+                            <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
+                            <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                        </div>
+    
+
+                    </form>
+                </div>
+
+            </div>
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Modal para Insertar un nuevo Usuario-->
     <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -27,6 +108,10 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
                         </button>
                     </div>
                     <div class="card-body">
+                        <div class="alert alert-danger text-center" id="noAgregado" style="display:none;">
+                            <span><i class="fas fa-times m-1"></i>No Se Permite Ingresar con el Mismo Nombre De Usuario</span>
+                        </div>
+
                         <form id="crearUsuario">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
@@ -85,9 +170,10 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>GESTION DE USUARIOS <button type="button" data-toggle="modal" data-target="#crearUsuario"
-                                class="btn bg-gradient-primary ml-2">Crear Nuevo Usuario</button></h1>
-                        <input type="hidden" id="user_tipo" value="<?php echo $_SESSION['rol']?>">
+                        <h1>GESTION DE USUARIOS <button id="button-Crear" type="button" data-toggle="modal"
+                                data-target="#crearUsuario" class="btn bg-gradient-primary ml-2">Crear Nuevo
+                                Usuario</button></h1>
+                        <input type="hidden" id="user_tipo" value="<?php echo $_SESSION['rol'] ?>">
 
                     </div>
                     <div class="col-sm-6">
@@ -114,8 +200,8 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
                         </div>
 
                     </div>
-                    <div  class="card-body">
-                        <div id="card-usuarios"class="row d-flex-aling-items-stretch">
+                    <div class="card-body">
+                        <div id="card-usuarios" class="row d-flex-aling-items-stretch">
                         </div>
 
                     </div>

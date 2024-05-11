@@ -1,20 +1,24 @@
 $(document).ready(function () {
   var tipo_usuario = $('#user_tipo').val();
   //console.log(tipo_user);
-  
+
+  if (tipo_usuario == 2) {
+    $('#button-Crear').hide();
+  }
+
   buscar_datos();
   var funcion;
 
   function buscar_datos(consulta) {
     funcion = 'buscar_user_adm';
     $.post('../controlador/ControladorUsuario.php', { consulta, funcion }, (response) => {
-      console.log(response);
+      //console.log(response);
       const usuarios = JSON.parse(response);
       let template = '';
 
       usuarios.forEach(usuario => {
         template += `
-                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                <div usuarioId="${usuario.id}"class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
               <div class="card bg-light">
                 <div class="card-header text-muted border-bottom-0">
                  ${usuario.rol}
@@ -53,11 +57,20 @@ $(document).ready(function () {
           }
           if (usuario.tipo_usuario == 2) {
             template += `
-            <button class="btn btn-primary ml-1">
-                     <i class="fas fa-window-close mr-1"></i>Ascender
+            <button class="ascender btn btn-primary ml-1" type="button" data-toggle="modal" data-target="#confirmar">
+                     <i class="fas fa-sort-amount-up mr-1"></i>Ascender
                     </button>
             `;
           }
+
+          /*if (usuario.tipo_usuario == 1) {
+            template += `
+            <button class="btn btn-secondary">
+                     <i class="fas fa-sort-amount-down mr-1"></i>Descender
+                    </button>
+            `;
+
+          }*/
 
         } else {
           if (tipo_usuario == 1 && usuario.tipo_usuario != 1 && usuario.tipo_usuario != 3) {
@@ -68,7 +81,6 @@ $(document).ready(function () {
             `;
 
           }
-
         }
         template += `
                   </div>
@@ -82,6 +94,7 @@ $(document).ready(function () {
     });
 
   }
+  //buscador
   $(document).on('keyup', '#buscarUser', function () {
     let valor = $(this).val();
 
@@ -95,5 +108,91 @@ $(document).ready(function () {
 
 
   });
+
+
+
+  //evento del formulario para crear usuario
+  $('#crearUsuario').submit(e => {
+    let nombre = $('#nombre').val();
+    let apellido = $('#apellido').val();
+    let edad = $('#edad').val();
+    let nombre_usuario = $('#user').val();
+    let contraseña = $('#pass').val();
+
+    funcion = 'crear_usuario';
+    $.post('../controlador/ControladorUsuario.php', { nombre, apellido, edad, nombre_usuario, contraseña, funcion }, (response) => {
+      if (response == 'agregado') {
+        Swal.fire({
+          position: "Center",
+          icon: "success",
+          title: "Usuario Agregado Exitosamente",
+          showConfirmButton: false,
+          timer: 1515
+        });
+        $('#crearUsuario').trigger('reset');
+        buscar_datos();
+      } else {
+        //si se repite el nombre del usuario se activara el alert 
+        $('#noAgregado').hide('slow');
+        $('#noAgregado').show(1000);
+        $('#noAgregado').hide(2000);
+
+      }
+    });
+    e.preventDefault();
+  });
+
+
+
+  //evento para ascender usuario
+  $(document).on('click', '.ascender', (e) => {
+    const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+    //console.log(elemento);
+    const id = $(elemento).attr('usuarioId')
+    //console.log(id);
+    funcion = 'ascender';
+    $('#id_user').val(id);
+    $('#funcion').val(funcion);
+  });
+
+  //evento del modal
+  $('#form-confirmar').submit(e => {
+    let pass = $('#old-pass').val();
+    let id_usuario = $('#id_user').val();
+    funcion = $('#funcion').val();
+    //console.log(pass);
+    //console.log(id_usuario);
+    //console.log(funcion);
+    $.post('../controlador/ControladorUsuario.php', { pass, id_usuario, funcion }, (response) => {
+      //console.log(response);
+      if (response == 'ascendido') {
+        Swal.fire({
+          position: "Center",
+          icon: "success",
+          title: "Usuario Ascendido Exitosamente",
+          showConfirmButton: false,
+          timer: 1515
+        });
+        $('#form-confirmar').trigger('reset');
+        buscar_datos();
+
+      } else {
+        //si la contraseña no es correcta
+        $('#noRealizado').hide('slow');
+        $('#noRealizado').show(1000);
+        $('#noRealizado').hide(2000);
+      }
+    });
+    e.preventDefault();
+
+  });
+
+
+
+
+
+
+
+
 
 })
