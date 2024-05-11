@@ -135,7 +135,8 @@ if ($_POST['funcion'] == 'buscar_user_adm') {
             'telefono' => $objeto->telefono,
             'residencia' => $objeto->residencia,
             'correo' => $objeto->correo,
-            'foto' => '../img/' . $objeto->foto
+            'foto' => '../img/' . $objeto->foto,
+            'tipo_usuario'=>$objeto->id_rol
             //esto toma datos desde la base de datos
         );
     }
