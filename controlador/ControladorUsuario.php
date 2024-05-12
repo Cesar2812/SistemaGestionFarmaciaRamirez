@@ -167,6 +167,15 @@ if ($_POST['funcion'] == 'ascender') {
     $usuario->ascender($pass,$id_ascendido, $id_usuario);
 }
 
+//evento para borrar Usuario
+if ($_POST['funcion'] == 'borrar_usuario') {
+    $pass=$_POST['pass'];
+    $id_borrado = $_POST['id_usuario'];
+    //creando el metodo ascender usuario
+    $usuario->borrar($pass,$id_borrado, $id_usuario);
+}
+
+
 
 
 

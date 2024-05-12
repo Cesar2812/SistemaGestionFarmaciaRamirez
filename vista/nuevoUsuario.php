@@ -39,7 +39,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                         Se Necesita Su Contraseña Para Confirmar
                     </span>
 
-                    <div class="alert alert-danger text-center" id="noRealizado" style="display:none;">
+                    <div class="alert alert-danger text-center" id="noEliminado" style="display:none;">
                         <span><i class="fas fa-times m-1"></i>La Contraseña No es Correcta</span>
                     </div>
 
@@ -67,7 +67,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                 Cerrar
                             </button>
                             <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
-                            <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                            <button type="submit" class="btn bg-gradient-primary">Aceptar</button>
                         </div>
     
 
@@ -112,7 +112,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                             <span><i class="fas fa-times m-1"></i>No Se Permite Ingresar con el Mismo Nombre De Usuario</span>
                         </div>
 
-                        <form id="crearUsuario">
+                        <form id="crearUser">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <input id="nombre" type="text" class="form-control" placeholder="Ingrese El Nombre"

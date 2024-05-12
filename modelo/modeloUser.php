@@ -185,6 +185,7 @@ class Usuario
 
     //funcion para ascender usuario
     function ascender($pass,$id_ascendido, $id_usuario){
+
         $sql = "select id_Usuario from usuario where id_Usuario=:id_usuario
                 and pass=:pass";
         $query = $this->acceso->prepare($sql);
@@ -198,7 +199,7 @@ class Usuario
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':id_ascendido'=>$id_ascendido, ':tipo' => $tipo_user));
             echo 'ascendido';
-            
+
         }else{
             echo 'no ascendido';
         }
@@ -207,12 +208,29 @@ class Usuario
 
     }
 
+    //funcion para borrar usuario 
+    function borrar($pass,$id_borrado, $id_usuario){
+        $sql = "select id_Usuario from usuario where id_Usuario=:id_usuario
+                and pass=:pass";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario' => $id_usuario, ':pass' => $pass));
+        $this->objetos = $query->fetchAll();
+
+        if (!empty($this->objetos)) {
+            $sql = "Delete from usuario where id_Usuario=:id_borrado";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id_borrado'=>$id_borrado));
+            echo 'borrado';
+
+        } else {
+            echo 'no borrado';
+        }
 
 
 
 
 
-
+    }
 }
 
 

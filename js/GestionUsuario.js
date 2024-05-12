@@ -50,7 +50,7 @@ $(document).ready(function () {
         if (tipo_usuario == 3) {
           if (usuario.tipo_usuario != 3) {
             template += `
-            <button class="btn btn-danger mr-1">
+            <button class="borrar-usuario btn btn-danger mr-1" type="button" data-toggle="modal" data-target="#confirmar">
                      <i class="fas fa-window-close mr-1"></i>Eliminar
                     </button>
             `;
@@ -75,7 +75,7 @@ $(document).ready(function () {
         } else {
           if (tipo_usuario == 1 && usuario.tipo_usuario != 1 && usuario.tipo_usuario != 3) {
             template += `
-            <button class="btn btn-danger">
+            <button class="borrar-usuario btn btn-danger"type="button" data-toggle="modal" data-target="#confirmar">
                      <i class="fas fa-window-close mr-1"></i>Eliminar
                     </button>
             `;
@@ -104,15 +104,12 @@ $(document).ready(function () {
     } else {
       buscar_datos();
     }
-
-
-
   });
 
 
 
   //evento del formulario para crear usuario
-  $('#crearUsuario').submit(e => {
+  $('#crearUser').submit(e => {
     let nombre = $('#nombre').val();
     let apellido = $('#apellido').val();
     let edad = $('#edad').val();
@@ -129,8 +126,9 @@ $(document).ready(function () {
           showConfirmButton: false,
           timer: 1515
         });
-        $('#crearUsuario').trigger('reset');
         buscar_datos();
+        $('#crearUser').trigger('reset');
+
       } else {
         //si se repite el nombre del usuario se activara el alert 
         $('#noAgregado').hide('slow');
@@ -155,7 +153,18 @@ $(document).ready(function () {
     $('#funcion').val(funcion);
   });
 
-  //evento del modal
+  //evento para borrar Usuario
+  $(document).on('click', '.borrar-usuario', (e) => {
+    const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+    //console.log(elemento);
+    const id = $(elemento).attr('usuarioId')
+    //console.log(id);
+    funcion = 'borrar_usuario';
+    $('#id_user').val(id);
+    $('#funcion').val(funcion);
+  });
+
+  //evento del modal para ascender usuario
   $('#form-confirmar').submit(e => {
     let pass = $('#old-pass').val();
     let id_usuario = $('#id_user').val();
@@ -173,14 +182,49 @@ $(document).ready(function () {
           showConfirmButton: false,
           timer: 1515
         });
-        $('#form-confirmar').trigger('reset');
         buscar_datos();
+        $('#form-confirmar').trigger('reset');
+
 
       } else {
         //si la contraseña no es correcta
         $('#noRealizado').hide('slow');
         $('#noRealizado').show(1000);
         $('#noRealizado').hide(2000);
+      }
+    });
+    e.preventDefault();
+
+  });
+
+
+  //evento del modal para borrar usuario
+  $('#form-confirmar').submit(e => {
+    let pass = $('#old-pass').val();
+    let id_usuario = $('#id_user').val();
+    funcion = $('#funcion').val();
+    //console.log(pass);
+    //console.log(id_usuario);
+    //console.log(funcion);
+    $.post('../controlador/ControladorUsuario.php', { pass, id_usuario, funcion }, (response) => {
+      //console.log(response);
+      if (response == 'borrado') {
+        Swal.fire({
+          position: "Center",
+          icon: "success",
+          title: "Usuario Borrado Exitosamente",
+          showConfirmButton: false,
+          timer: 1515
+        });
+        buscar_datos();
+        $('#form-confirmar').trigger('reset');
+
+
+      } else {
+        //si la contraseña no es correcta
+        $('#noEliminado').hide('slow');
+        $('#noEliminado').show(1000);
+        $('#noEliminado').hide(2000);
       }
     });
     e.preventDefault();
