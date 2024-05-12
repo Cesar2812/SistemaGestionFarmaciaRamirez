@@ -243,7 +243,7 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
                                         <li class="list-group-item">
                                             <b style="color:black">Rol De Usuario</b>
                                              <span id="rol"
-                                                class=" float-right badge badge-success">Administrador</span>
+                                                class=" float-right">Administrador</span>
                                         </li>
 
                                         <button data-toggle="modal" data-target="#change" type="button"

@@ -20,10 +20,21 @@ $(document).ready(function () {
         template += `
                 <div usuarioId="${usuario.id}"class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
               <div class="card bg-light">
-                <div class="card-header text-muted border-bottom-0">
-                 ${usuario.rol}
-                </div>
-                <div class="card-body pt-0">
+                <div class="card-header text-muted border-bottom-0">`;
+        if (usuario.tipo_usuario == 3) {
+          template += `<h1 class="badge badge-danger">${usuario.rol}</h1>`;
+
+        }
+        if (usuario.tipo_usuario == 1) {
+          template += `<h1 class="badge badge-warning">${usuario.rol}</h1>`;
+
+        }
+        if (usuario.tipo_usuario == 2) {
+          template += `<h1 class="badge badge-info">${usuario.rol}</h1>`;
+
+        }
+        template += `</div>
+                 <div class="card-body pt-0">
                   <div class="row">
                     <div class="col-7">
                       <h2 class="lead"><b>${usuario.nombre} ${usuario.apellido}</b></h2>
@@ -196,6 +207,8 @@ $(document).ready(function () {
     e.preventDefault();
 
   });
+
+
 
 
   //evento del modal para borrar usuario

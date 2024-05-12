@@ -26,7 +26,18 @@ $(document).ready(function () {
             apellido += `${usuario.apellido}`;
             usuario_ += `${usuario.usuario}`;
             edad += `${usuario.edad}`;
-            rol += `${usuario.rol}`;
+            if (usuario.rol =='Root') {
+                rol += `<h1 class="badge badge-danger">${usuario.rol}</h1>`;
+
+            }
+            if (usuario.rol =='Administrador') {
+                rol += `<h1 class="badge badge-warning">${usuario.rol}</h1>`;
+
+            }
+            if (usuario.rol =='Facturador') {
+                rol += `<h1 class="badge badge-info">${usuario.rol}</h1>`;
+
+            }
             telefono += `${usuario.telefono}`;
             residencia += `${usuario.residencia}`;
             Correo += `${usuario.correo}`;
