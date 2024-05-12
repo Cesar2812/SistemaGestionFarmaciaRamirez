@@ -46,7 +46,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-outline-secondary float-right m-1"
+                                <button type="button" class=" btn btn-danger float-right m-1"
                                     data-dismiss="modal">
                                     Cerrar
                                 </button>
@@ -92,7 +92,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-outline-secondary float-right m-1"
+                                <button type="button" class=" btn btn-danger float-right m-1"
                                     data-dismiss="modal">
                                     Cerrar
                                 </button>
@@ -137,7 +137,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-outline-secondary float-right m-1"
+                                <button type="button" class=" btn btn-danger float-right m-1"
                                     data-dismiss="modal">
                                     Cerrar
                                 </button>

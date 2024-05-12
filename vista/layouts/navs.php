@@ -36,10 +36,63 @@
 
 
             <ul class="navbar-nav ml-auto">
-                <a href="../controlador/ControladorDeslogueo.php"><button class="btn btn-block btn-danger">Cerrar
-                        Sesion</button></a>
+                <button class="btn btn-block btn-danger" id="cerrarSesionBtn">Cerrar
+                    Sesion</button>
             </ul>
         </nav>
+
+        <script>
+
+            document.getElementById('cerrarSesionBtn').addEventListener('click', function () {
+                Swal.fire({
+                    position: "top-end",
+                    title: '¿Estás seguro?',
+                    text: "¿Deseas cerrar sesión?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, cerrar sesión',
+                    cancelButtonText: 'No, mantenerme dentro'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "../controlador/ControladorDeslogueo.php";
+                    }
+                });
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <!-- Navegacion Parte Izquierda -->
@@ -55,7 +108,7 @@
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img id="usuario-navb" src="../img/Tamara.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img id="usuario-navb" src="../img/user.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">

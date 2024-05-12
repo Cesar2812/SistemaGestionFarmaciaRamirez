@@ -71,7 +71,7 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class=" btn btn-outline-secondary" data-dismiss="modal">
+                            <button type="button" class=" btn btn-danger" data-dismiss="modal">
                                 Cerrar
                             </button>
                             <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
@@ -102,7 +102,7 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <img id="foto-modal-chan" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                        <img id="foto-modal-chan" src="../img/user.png" class="profile-user-img img-fluid img-circle">
                     </div>
 
                     <div class="text-center">
@@ -128,7 +128,7 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
 
 
                         <div class="modal-footer">
-                            <button type="button" class=" btn btn-outline-secondary" data-dismiss="modal">
+                            <button type="button" class=" btn btn-danger" data-dismiss="modal">
                                 Cerrar
                             </button>
                             <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
@@ -203,7 +203,7 @@ if ($_SESSION['rol'] ===1||$_SESSION['rol']===3) {
                             <div class="card card-info card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                        <img id="foto-card" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                                        <img id="foto-card" src="../img/user.png" class="profile-user-img img-fluid img-circle">
                                     </div>
 
                                     <div class="text-center mt-2">

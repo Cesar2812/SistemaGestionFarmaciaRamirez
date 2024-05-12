@@ -13,6 +13,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
     include_once 'layouts/navs.php';
     ?>
 
+
     <!--Modal Para poner la contraseña y ascender Roles a Facturadores-->
     <div class="modal fade" id="confirmar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -25,7 +26,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                 </div>
                 <div class="modal-body">
                     <div class="text-center">
-                        <img id="foto-contraseña" src="../img/Tamara.jpg" class="profile-user-img img-fluid img-circle">
+                        <img id="foto-contraseña" src="../img/user.png" class="profile-user-img img-fluid img-circle">
                     </div>
 
                     <div class="text-center">
@@ -63,7 +64,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                         
 
                         <div class="modal-footer">
-                                <button type="button" class=" btn btn-outline-secondary" data-dismiss="modal">
+                                <button type="button" class=" btn btn-danger" data-dismiss="modal">
                                 Cerrar
                             </button>
                             <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
@@ -80,27 +81,13 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Modal para Insertar un nuevo Usuario-->
     <div class="modal fade" id="crearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
-                <div class="card card-info">
+                <div class="card card-light">
                     <div class="card-header">
                         <h2 class="card-title">Crear Usuario</h2>
                         <button data-dismiss="modal" aria-label="close" class="close">
@@ -147,7 +134,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-outline-secondary float-right m-1"
+                                <button type="button" class=" btn btn-danger float-right m-1"
                                     data-dismiss="modal">
                                     Cerrar
                                 </button>
