@@ -225,11 +225,6 @@ class Usuario
         } else {
             echo 'no borrado';
         }
-
-
-
-
-
     }
 }
 

@@ -92,13 +92,13 @@
                             </a>
                         </li>
 
-                        <li class="nav-header">LABORATORIO</li>
+                        <li class="nav-header">ALMACEN</li>
 
                         <li class="nav-item">
-                            <a href="../vista/edicionUsuarios.php" class="nav-link">
-                                <i class="fa fa-flask"></i>
+                            <a href="../vista/atributosMedicamentos.php" class="nav-link">
+                                <i class="nav-icon fas fa-vials"></i>
                                 <p>
-                                    Nuevo Laboratorio
+                                    Gestion Medicamentos
                                 </p>
                             </a>
                         </li>
