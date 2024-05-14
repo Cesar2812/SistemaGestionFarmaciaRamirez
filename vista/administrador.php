@@ -1,6 +1,6 @@
 <?php
 //ESTA ES LA PAGINA PRINCIPAL DEL USUARIO ADMINISTRADOR
-
+       
 
 //iniciando la sesion 
 session_start();
@@ -14,6 +14,7 @@ if ($_SESSION['rol'] === 1||$_SESSION['rol']===3) {
     //archivo que contiene las barras de navegacion de la izquierda
     include_once 'layouts/navs.php';
     ?>
+    
 
 
     <script>

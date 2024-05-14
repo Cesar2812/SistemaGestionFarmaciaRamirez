@@ -21,7 +21,7 @@ session_start();
 //en este condicinal se valida si el campo  usuario con determinado rol esta vacio lo que hace es retornar al controlador y mantenerse sentro del login
 if (!empty($_SESSION['rol'])) {
     header('Location: controlador/ControladorLogin.php');
-    
+
 } else {
     //en este caso si no ocurre lo anterior se muestra el formulario de inicio de sesion
     session_destroy();
@@ -54,7 +54,10 @@ if (!empty($_SESSION['rol'])) {
                         <input type="password" name="pass" class="input">
                     </div>
                 </div>
-                <a href=>¿Olvido su Contraseña?</a>
+                <p class="mt-3 mb-1">
+                    <a href="vista/RecuperarContra.php">¡CLICK AQUI PARA RECUPERAR CONTRASEÑA!</a>
+                </p>
+
                 <input type="submit" class="btn" value="Iniciar Sesion">
             </form>
         </div>
@@ -74,14 +77,14 @@ if (!empty($_SESSION['rol'])) {
                 });
             }
 
-             /*Swal.fire({
-                 position: 'center',
-                 title: 'Error de Inicio de Sesión',
-                 text: 'Usuario o contraseña incorrectos',
-                 icon: 'error',
-                 confirmButtonColor: '#d33',
-                 confirmButtonText: 'OK'
-             });*/
+            /*Swal.fire({
+                position: 'center',
+                title: 'Error de Inicio de Sesión',
+                text: 'Usuario o contraseña incorrectos',
+                icon: 'error',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'OK'
+            });*/
 
             // Check for empty fields on form submission
             document.querySelector('form').addEventListener('submit', function (event) {
@@ -101,8 +104,9 @@ if (!empty($_SESSION['rol'])) {
         </script>
     </body>
     <script src="js/login.js"></script>
+
     </html>
-    
+
     <?php
 }
 ?>

@@ -61,7 +61,5 @@ if (!empty($_SESSION['rol'])) {
 
         //si no se cumple la condicion se regresa al index osea al loguin 
         header('Location:../index.php');
-
     }
-
 }
