@@ -105,6 +105,7 @@ $(document).ready(function () {
     });
 
   }
+
   //buscador
   $(document).on('keyup', '#buscarUser', function () {
     let valor = $(this).val();
@@ -135,7 +136,7 @@ $(document).ready(function () {
           icon: "success",
           title: "Usuario Agregado Exitosamente",
           showConfirmButton: false,
-          timer: 1515
+          timer: 1520
         });
         buscar_datos();
         $('#crearUser').trigger('reset');
@@ -191,7 +192,7 @@ $(document).ready(function () {
           icon: "success",
           title: "Usuario Ascendido Exitosamente",
           showConfirmButton: false,
-          timer: 1515
+          timer: 1520
         });
         buscar_datos();
         $('#form-confirmar').trigger('reset');
@@ -227,7 +228,7 @@ $(document).ready(function () {
           icon: "success",
           title: "Usuario Borrado Exitosamente",
           showConfirmButton: false,
-          timer: 1515
+          timer: 1520
         });
         buscar_datos();
         $('#form-confirmar').trigger('reset');
@@ -244,12 +245,4 @@ $(document).ready(function () {
 
   });
 
-
-
-
-
-
-
-
-
-})
+});

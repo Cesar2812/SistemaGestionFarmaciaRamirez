@@ -130,7 +130,7 @@ $(document).ready(function () {
                     icon: "success",
                     title: "Cambio Realizado Exitosamente",
                     showConfirmButton: false,
-                    timer: 1515
+                    timer: 1520
                 });
                 $('#form-pass').trigger('reset');
             } else {
@@ -170,7 +170,7 @@ $(document).ready(function () {
                     icon: "success",
                     title: "Cambio Realizado Exitosamente",
                     showConfirmButton: false,
-                    timer: 1515
+                    timer: 1520
                 });
                 $('#foto-modal-chan').attr('src', json.ruta);
                 $('#form-foto').trigger('reset');

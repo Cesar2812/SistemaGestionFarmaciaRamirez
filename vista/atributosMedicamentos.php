@@ -15,6 +15,60 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
     include_once 'layouts/navs.php';
     ?>
 
+    <!-- Modal para cambiar Logo  -->
+    <div class="modal fade" id="cambiarLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title fs-5" id="exampleModalLabel">Cambiar Logo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img id="logo-img" src="../img/user.png" class="profile-user-img img-fluid img-circle">
+                    </div>
+
+                    <div class="text-center">
+                        <b id="nombre_lab">
+                            
+                        </b>
+                    </div>
+
+
+                    <div class="alert alert-danger text-center" id="nocambiado" style="display:none;">
+                        <span><i class="fas fa-times m-1"></i>Formato de Imagen Incorrecto</span>
+                    </div>
+
+                    <form id="form-logo" enctype="multipart/form-data">
+
+                        <div class="input-group mb-3 ml-5 mt-2">
+                            <input type="file" name="foto" class="input-group">
+                             <input type="hidden" name="funcion" id="funcion">
+                               <input type="hidden" name="id_logo_lab" id="id_logo_lab">
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class=" btn btn-danger" data-dismiss="modal">
+                                Cerrar
+                            </button>
+                            <!--<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>-->
+                            <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Modal para Insertar un nuevo Laboratorio-->
     <div class="modal fade" id="crearLaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -29,9 +83,8 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                         </button>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-danger text-center" id="noAgregado" style="display:none;">
-                            <span><i class="fas fa-times m-1"></i>No Se Permite Ingresar con el Mismo Nombre De
-                                Usuario</span>
+                        <div class="alert alert-danger text-center" id="noADD" style="display:none;">
+                            <span><i class="fas fa-times m-1"></i>Ya Existe Un Laboratorio Con Este Nombre</span>
                         </div>
 
                         <form id="crearLab">
@@ -41,13 +94,18 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     placeholder="Ingrese El Nombre" required>
                             </div>
 
+                            <div class="form-group">
+                                <label for="telefono-laboratorio">Telefono Del Laboratorio</label>
+                                <input id="telefono-laboratorio" type="text" class="form-control"
+                                    placeholder="Ingrese El Telefono" required>
+                            </div>
+
                             <div class="card-footer">
                                 <button type="submit" class="btn bg-gradient-primary float-right m-1">
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-danger float-right m-1"
-                                    data-dismiss="modal">
+                                <button type="button" class=" btn btn-danger float-right m-1" data-dismiss="modal">
                                     Cerrar
                                 </button>
                             </div>
@@ -92,8 +150,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-danger float-right m-1"
-                                    data-dismiss="modal">
+                                <button type="button" class=" btn btn-danger float-right m-1" data-dismiss="modal">
                                     Cerrar
                                 </button>
                             </div>
@@ -137,8 +194,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                     Guardar
                                 </button>
 
-                                <button type="button" class=" btn btn-danger float-right m-1"
-                                    data-dismiss="modal">
+                                <button type="button" class=" btn btn-danger float-right m-1" data-dismiss="modal">
                                     Cerrar
                                 </button>
                             </div>
@@ -215,7 +271,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
 
                             </div>
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="laboratorio">
                                         <div class="card card-info">
@@ -227,17 +283,42 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                                     </button>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input id="buscar-lab" type="text" class="form-control float-left"
+                                                    <input id="buscar_lab" type="text" class="form-control float-left"
                                                         placeholder="Ingrese el Nombre del Laboratorio">
                                                     <div class="input-group-append"><button class="btn btn-default"><i
                                                                 class="fas fa-search"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-body"></div>
+                                            <div class="card-body p-0 table-responsive">
+
+                                                <table class="table table-hover text-nowrap">
+                                                    <thead class="table-secondary">
+                                                        <tr>
+                                                            <th>LABORATORIO</th>
+                                                            <th>TELEFONO</th>
+                                                            <th>LOGO</th>
+                                                            <th>OPCIONES</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody class="table-active" id="table_lab">
+
+                                                    </tbody>
+                                                </table>
+
+
+
+
+
+
+
+
+                                            </div>
                                             <div class="card-footer"></div>
                                         </div>
                                     </div>
+
                                     <div class="tab-pane" id="categoria">
                                         <div class="card card-info">
                                             <div class="card-header">
@@ -305,3 +386,4 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
     header('Location:../index.php');
 }
 ?>
+<script src="../js/Laboratorios.js"></script>

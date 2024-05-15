@@ -9,6 +9,7 @@ $pass = $_POST["pass"];
 //se crea un objeto de la clase Usuario que esta en modelo
 $usuario = new Usuario();
 
+
 //condiconal que funciona con respecto a los accesos del sistema 
 if (!empty($_SESSION['rol'])) {
     switch ($_SESSION['rol']) {

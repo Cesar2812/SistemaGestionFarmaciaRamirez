@@ -112,13 +112,13 @@
                             </a>
                         </li>
 
-                        <li class="nav-header">ALMACEN</li>
+                        <li class="nav-header">MEDICAMENTOS</li>
 
                         <li class="nav-item">
                             <a href="../vista/atributosMedicamentos.php" class="nav-link">
                                 <i class="nav-icon fas fa-vials"></i>
                                 <p>
-                                    Gestion Medicamentos
+                                    Atributos
                                 </p>
                             </a>
                         </li>
