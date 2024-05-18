@@ -221,7 +221,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 buscar_lab();
-                
+
             },
             error: function (error) {
                 // console.log(error);
