@@ -70,7 +70,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
 
 
-    <!-- Modal para Insertar un nuevo Laboratorio-->
+     <!-- Modal para Insertar un nuevo Laboratorio-->
     <div class="modal fade" id="crearLaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -78,7 +78,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
                 <div class="card card-light">
                     <div class="card-header">
-                        <h2 class="card-title">Crear o Editar Laboratorio</h2>
+                        <h2 class="card-title">Crear Laboratorio</h2>
                         <button data-dismiss="modal" aria-label="close" class="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -118,6 +118,83 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
         </div>
     </div>
 
+
+
+
+    <!-- Modal para editar un nuevo Laboratorio-->
+    <div class="modal fade" id="editarLaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h2 class="card-title">Editar Laboratorio</h2>
+                        <button data-dismiss="modal" aria-label="close" class="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-danger text-center" id="noADD" style="display:none;">
+                            <span><i class="fas fa-times m-1"></i>Ya Existe Un Laboratorio Con Este Nombre</span>
+                        </div>
+
+                        <form id="editarLab">
+                            <div class="form-group">
+                                <label for="nombrelab">Nombre Del Laboratorio</label>
+                                <input id="nombrelab" type="text" class="form-control"
+                                    placeholder="Ingrese El Nombre" required>
+                                   
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefonolab">Telefono Del Laboratorio</label>
+                                <input id="telefonolab" type="text" class="form-control"
+                                    placeholder="Ingrese El Telefono" required>
+
+                                     <input type="hidden" id="idLab">
+                            </div>
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn bg-gradient-primary float-right m-1">
+                                    Guardar
+                                </button>
+
+                                <button type="button" class=" btn btn-danger float-right m-1" data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
    

@@ -97,21 +97,8 @@ class Laboratorio
 
     }
 
-    //metodo para editar laboratorio
-    function editar($id, $nombre, $telefono)
-    {
-        try {
-            $sql = "UPDATE laboratorio SET nombre=:nombre, telefono=:telefono WHERE id_Laboratorio=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id' => $id, ':nombre' => $nombre, ':telefono' => $telefono));
-            echo 'edit';
-        } catch (PDOException $e) {
-            die("Error al ejecutar la consulta: " . $e->getMessage());
-        }
-    }
-
-
-
+    
+    //consulta para eliminar laboratorio 
     function eliminar($id)
     {   
         try{
@@ -127,6 +114,19 @@ class Laboratorio
         }catch(PDOException $e){
             die("Error al ejecutar la consulta: " . $e->getMessage());
 
+        }
+    }
+
+    //metodo para editar laboratorio
+    function editar($id, $nombre, $telefono)
+    {
+        try {
+            $sql = "UPDATE laboratorio SET nombre=:nombre, telefono=:telefono WHERE id_Laboratorio=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id' => $id, ':nombre' => $nombre, ':telefono' => $telefono));
+            echo 'edit';
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
         }
     }
 }

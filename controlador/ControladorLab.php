@@ -2,6 +2,7 @@
 include '../modelo/modeloLab.php';
 $laboratorio = new Laboratorio();
 
+
 //funcion para crear Laboratorio
 if ($_POST['funcion'] == 'crear_laboratorio') {
     $nombre_lab = $_POST['nombre_lab'];
@@ -10,6 +11,7 @@ if ($_POST['funcion'] == 'crear_laboratorio') {
 
     $laboratorio->crear_lab($nombre_lab, $telefono_lab, $logo);
 }
+
 
 //funcion para buscar laboratorio
 if ($_POST['funcion'] == 'buscarLaboratorio') {
@@ -26,6 +28,7 @@ if ($_POST['funcion'] == 'buscarLaboratorio') {
     $jsonString = json_encode($json);
     echo $jsonString;
 }
+
 
 
 //funcion para cambiar logo
@@ -65,5 +68,10 @@ if ($_POST['funcion'] == 'cambiar_logo') {
     }
 
 }
+
+
+
+
+
 
 
