@@ -27,7 +27,8 @@ if ($_POST['funcion'] == 'buscarLaboratorio') {
     echo $jsonString;
 }
 
-//funcion para cambiar avatar
+
+//funcion para cambiar logo
 if ($_POST['funcion'] == 'cambiar_logo') {
     $id = $_POST['id_logo_lab'];
 
@@ -38,10 +39,10 @@ if ($_POST['funcion'] == 'cambiar_logo') {
         $laboratorio->cambiar_logo($id, $nombre);
 
         foreach ($laboratorio->objetos as $objeto) {
-            if($objeto->logo!='PorDefecto.jpg'){
+            if ($objeto->logo != 'PorDefecto.jpg') {
                 unlink('../img/' . $objeto->logo);
             }
-            
+
         }
         //devolviendo imagen en un json para actualizarlas en el formulario
 
@@ -63,5 +64,6 @@ if ($_POST['funcion'] == 'cambiar_logo') {
         echo $jsonString;
     }
 
-
 }
+
+

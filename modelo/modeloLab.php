@@ -81,13 +81,13 @@ class Laboratorio
         try {
             $sql = "select logo from laboratorio where id_Laboratorio=:id";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id));
+            $query->execute(array(':id' => $id));
             $this->objetos = $query->fetchAll();
 
 
             $sql = "update laboratorio set logo=:nombre where id_Laboratorio=:id";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id'=>$id,':nombre'=>$nombre));
+            $query->execute(array(':id' => $id, ':nombre' => $nombre));
             return $this->objetos;
 
 
@@ -97,31 +97,38 @@ class Laboratorio
 
     }
 
+    //metodo para editar laboratorio
+    function editar($id, $nombre, $telefono)
+    {
+        try {
+            $sql = "UPDATE laboratorio SET nombre=:nombre, telefono=:telefono WHERE id_Laboratorio=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id' => $id, ':nombre' => $nombre, ':telefono' => $telefono));
+            echo 'edit';
+        } catch (PDOException $e) {
+            die("Error al ejecutar la consulta: " . $e->getMessage());
+        }
+    }
 
 
 
+    function eliminar($id)
+    {   
+        try{
+            $sql = "DELETE FROM laboratorio WHERE id_Laboratorio=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(':id' => $id));
+            if(!empty($query->execute(array(':id' => $id)))){
+                echo 'borrado';
+            }else{
+                echo 'noBorrado';
+            }
+           
+        }catch(PDOException $e){
+            die("Error al ejecutar la consulta: " . $e->getMessage());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+    }
 }
 
 

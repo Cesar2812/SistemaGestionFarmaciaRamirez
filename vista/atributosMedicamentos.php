@@ -16,7 +16,8 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
     ?>
 
     <!-- Modal para cambiar Logo  -->
-    <div class="modal fade" id="cambiarLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cambiarLogo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -32,7 +33,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
                     <div class="text-center">
                         <b id="nombre_lab">
-                            
+
                         </b>
                     </div>
 
@@ -45,8 +46,8 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
                         <div class="input-group mb-3 ml-5 mt-2">
                             <input type="file" name="foto" class="input-group">
-                             <input type="hidden" name="funcion" id="funcion">
-                               <input type="hidden" name="id_logo_lab" id="id_logo_lab">
+                            <input type="hidden" name="funcion" id="funcion">
+                            <input type="hidden" name="id_logo_lab" id="id_logo_lab">
                         </div>
 
 
@@ -77,7 +78,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
                 <div class="card card-light">
                     <div class="card-header">
-                        <h2 class="card-title">Crear Laboratorio</h2>
+                        <h2 class="card-title">Crear o Editar Laboratorio</h2>
                         <button data-dismiss="modal" aria-label="close" class="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -92,6 +93,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                 <label for="nombre-laboratorio">Nombre Del Laboratorio</label>
                                 <input id="nombre-laboratorio" type="text" class="form-control"
                                     placeholder="Ingrese El Nombre" required>
+                                   
                             </div>
 
                             <div class="form-group">
@@ -115,6 +117,16 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
             </div>
         </div>
     </div>
+
+
+
+   
+
+
+
+
+
+
 
 
 

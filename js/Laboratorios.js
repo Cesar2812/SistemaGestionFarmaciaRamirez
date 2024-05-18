@@ -32,6 +32,8 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+
+
     //funcion para buscar laboratorios 
     function buscar_lab(consulta) {
         funcion = 'buscarLaboratorio';
@@ -41,7 +43,7 @@ $(document).ready(function () {
             let template = '';
             laboras.forEach(laboratorio => {
                 template += `
-                <tr labId="${laboratorio.id_Laboratorio}"labNombre="${laboratorio.nombre}"labLogo="${laboratorio.logo}">
+                <tr labId="${laboratorio.id_Laboratorio}"labNombre="${laboratorio.nombre}"labLogo="${laboratorio.logo}"labTelefono="${laboratorio.telefono}">
                 <td>${laboratorio.nombre}</td>
                 <td>${laboratorio.telefono}</td>
                 <td>
@@ -54,17 +56,8 @@ $(document).ready(function () {
                 </button>
                 <button class="eliminar btn btn-danger" title="Eliminar"><i class="fas fa-trash-alt"></i>
                 </button>
-                
                 </td>
-                
-                
                 </tr>
-                
-                
-                
-                
-                
-                
                 `;
             });
             $('#table_lab').html(template);
@@ -81,11 +74,12 @@ $(document).ready(function () {
         }
     });
 
+
+
     //capturando datos para pasarlos al modal para cambiar logo
-    $(document).on('click', '.logo',(e)=> {
+    $(document).on('click', '.logo', (e) => {
         funcion = 'cambiar_logo';
         const elemento = $(this)[0].activeElement.parentElement.parentElement;
-        //console.log(elemento);
         const id = $(elemento).attr('labId');
         const nombre = $(elemento).attr('labNombre');
         const logo = $(elemento).attr('labLogo');
@@ -110,7 +104,6 @@ $(document).ready(function () {
             processData: false,
             contentType: false
         }).done(function (response) {
-            //console.log(response);
             const json = JSON.parse(response);
             if (json.alert == 'edit') {
                 $('#logo-img').attr('src', json.ruta);
@@ -123,18 +116,82 @@ $(document).ready(function () {
                 });
                 $('#form-logo').trigger('reset');
                 buscar_lab();
-                
+
             } else {
                 $('#nocambiado').hide('slow');
                 $('#nocambiado').show(1000);
                 $('#nocambiado').hide(2000);
                 $('#form-logo').trigger('reset');
             }
-            
+
         });
         e.preventDefault();
 
     })
+
+    //evento para eliminar Laboratorio
+    $(document).on('click', '.eliminar', (e) => {
+        const elemento = $(e.target).closest('tr');
+        console.log(elemento); // Verifica si estás obteniendo la fila correctamente
+        const id = parseInt(elemento.attr('labId'));
+        const nombre = $(elemento).attr('labNombre');
+
+        console.log("el id a eliminar es: " + id);
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger mr-1"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: '¿Esta Seguro que Desea Eliminar el Laboratorio ' + nombre + '?',
+            text: "¡No podra revertir estos cambios!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "¡Si, Borrar!",
+            cancelButtonText: "¡No, Cancelar!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "../controlador/eliminarLab.php",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        buscar_lab();
+                    },
+                    error: function (error) {
+                        // console.log(error);
+                    }
+                });
+
+                swalWithBootstrapButtons.fire({
+                    title: "¡Borrado!",
+                    text: '¡El Laboratorio ' + nombre + ' fue borrado exitosamente.',
+                    icon: "success"
+                });
+                buscar_lab("");
+
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "La eliminacion fue cancelada",
+                    icon: "error"
+                });
+            }
+        });
+
+    });
+
+
+
+
+
 
 
 
