@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 
 
-    //capturando datos para pasarlos al modal para cambiar logo
+    //capturando datos para pasarlos al modal para cambiar logo del laboratorio
     $(document).on('click', '.logo', (e) => {
         funcion = 'cambiar_logo';
         const elemento = $(this)[0].activeElement.parentElement.parentElement;

@@ -476,3 +476,5 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 }
 ?>
 <script src="../js/Laboratorios.js"></script>
+<script src="../js/Categoria.js"></script>
+<script src="../js/Presentacion.js"></script>
