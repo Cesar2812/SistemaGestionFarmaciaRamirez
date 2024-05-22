@@ -70,7 +70,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
 
 
-     <!-- Modal para Insertar un nuevo Laboratorio-->
+    <!-- Modal para Insertar un nuevo Laboratorio-->
     <div class="modal fade" id="crearLaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -93,7 +93,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                 <label for="nombre-laboratorio">Nombre Del Laboratorio</label>
                                 <input id="nombre-laboratorio" type="text" class="form-control"
                                     placeholder="Ingrese El Nombre" required>
-                                   
+
                             </div>
 
                             <div class="form-group">
@@ -121,7 +121,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
 
 
-    <!-- Modal para editar un nuevo Laboratorio-->
+    <!-- Modal para editar un Laboratorio-->
     <div class="modal fade" id="editarLaboratorio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -142,18 +142,66 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                         <form id="editarLab">
                             <div class="form-group">
                                 <label for="nombrelab">Nombre Del Laboratorio</label>
-                                <input id="nombrelab" type="text" class="form-control"
-                                    placeholder="Ingrese El Nombre" required>
-                                   
+                                <input id="nombrelab" type="text" class="form-control" placeholder="Ingrese El Nombre"
+                                    required>
+
                             </div>
 
                             <div class="form-group">
                                 <label for="telefonolab">Telefono Del Laboratorio</label>
-                                <input id="telefonolab" type="text" class="form-control"
-                                    placeholder="Ingrese El Telefono" required>
+                                <input id="telefonolab" type="text" class="form-control" placeholder="Ingrese El Telefono"
+                                    required>
 
-                                     <input type="hidden" id="idLab">
+                                <input type="hidden" id="idLab">
                             </div>
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn bg-gradient-primary float-right m-1">
+                                    Guardar
+                                </button>
+
+                                <button type="button" class=" btn btn-danger float-right m-1" data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal para editar una Categoria-->
+    <div class="modal fade" id="editarCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h2 class="card-title">Editar Categoria</h2>
+                        <button data-dismiss="modal" aria-label="close" class="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-danger text-center" id="noADD" style="display:none;">
+                            <span><i class="fas fa-times m-1"></i>Ya Existe Una Categoria Con Este Nombre</span>
+                        </div>
+
+                        <form id="editarCateg">
+                            <div class="form-group">
+                                <label for="nombreCate">Nombre De La Categoria</label>
+                                <input id="nombreCate" type="text" class="form-control" placeholder="Ingrese El Nombre"
+                                    required>
+                                <input type="text" id="idCateg">
+
+                            </div>
+
+
 
                             <div class="card-footer">
                                 <button type="submit" class="btn bg-gradient-primary float-right m-1">
@@ -177,37 +225,6 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-   
-
-
-
-
-
-
-
-
-
-
     <!-- Modal para Insertar una Nueva Categoria-->
     <div class="modal fade" id="crearCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -223,16 +240,64 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                     </div>
                     <div class="card-body">
                         <div class="alert alert-danger text-center" id="noAgregado" style="display:none;">
-                            <span><i class="fas fa-times m-1"></i>No Se Permite Ingresar con el Mismo Nombre De
-                                Usuario</span>
+                            <span><i class="fas fa-times m-1"></i>Ya existe una Categoria con este Nombre</span>
                         </div>
 
-                        <form id="crearCategoria">
+                        <form id="crearCatego">
                             <div class="form-group">
                                 <label for="nombre-categoria">Nombre De La Categoria</label>
                                 <input id="nombre-categoria" type="text" class="form-control"
                                     placeholder="Ingrese El Nombre" required>
                             </div>
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn bg-gradient-primary float-right m-1">
+                                    Guardar
+                                </button>
+
+                                <button type="button" class=" btn btn-danger float-right m-1" data-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal para editar una Presentacion-->
+    <div class="modal fade" id="editarPresentacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="card card-light">
+                    <div class="card-header">
+                        <h2 class="card-title">Editar Presentacion</h2>
+                        <button data-dismiss="modal" aria-label="close" class="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-danger text-center" id="noADD" style="display:none;">
+                            <span><i class="fas fa-times m-1"></i>Ya Existe Una Categoria Con Este Nombre</span>
+                        </div>
+
+                        <form id="editarPresent">
+                            <div class="form-group">
+                                <label for="nombrelab">Descripcion de la Presentacion</label>
+                                <input id="nombrelab" type="text" class="form-control" placeholder="Ingrese El Nombre"
+                                    required>
+                                <input type="hidden" id="idPresent">
+
+                            </div>
+
+
 
                             <div class="card-footer">
                                 <button type="submit" class="btn bg-gradient-primary float-right m-1">
@@ -418,7 +483,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                                     </button>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input id="buscar-lab" type="text" class="form-control float-left"
+                                                    <input id="buscar-catg" type="text" class="form-control float-left"
                                                         placeholder="Ingrese el Nombre de la Categoria">
                                                     <div class="input-group-append"><button class="btn btn-default"><i
                                                                 class="fas fa-search"></i>
@@ -426,7 +491,36 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-body"></div>
+                                            <div class="card-body p-0 table-responsive">
+                                                <table class="table table-hover text-nowrap">
+                                                    <thead class="table-secondary">
+                                                        <tr>
+                                                            <th>CATEGORIA</th>
+                                                            <th>OPCIONES</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody class="table-active" id="table_categ">
+
+                                                    </tbody>
+                                                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            </div>
                                             <div class="card-footer"></div>
                                         </div>
                                     </div>
@@ -447,7 +541,27 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-body"></div>
+                                            <div class="card-body p-0 table-responsive">
+                                                <table class="table table-hover text-nowrap">
+                                                    <thead class="table-secondary">
+                                                        <tr>
+                                                            <th>PRESENTACION</th>
+                                                            <th>OPCIONES</th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody class="table-active" id="table_present">
+
+                                                    </tbody>
+                                                </table>
+
+
+
+
+
+
+
+                                            </div>
                                             <div class="card-footer"></div>
                                         </div>
                                     </div>
