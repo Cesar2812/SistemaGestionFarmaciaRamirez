@@ -6,7 +6,7 @@ $(document).ready(function () {
         funcion = 'crear_categoria';
 
         //peticion con Ajax para crear categoria, se hace referncia al controlador del archivo php
-        $.post('../controlador/ControladorCatg.php', {nombre_categ,funcion }, (response) => {
+        $.post('../controlador/ControladorCatg.php', { nombre_categ, funcion }, (response) => {
             if (response == 'agregado') {
                 Swal.fire({
                     position: "Center",
@@ -137,10 +137,10 @@ $(document).ready(function () {
         console.log(elemento); // Verifica si estás obteniendo la fila correctamente
         const id = parseInt(elemento.attr('CatgId'));
         const descripcion = $(elemento).attr('CatgNombre');
-        
+
         $('#idCateg').val(id);
         $('#nombreCate').val(descripcion)
-       
+
     });
 
     $('#editarCateg').submit(e => {
@@ -148,7 +148,7 @@ $(document).ready(function () {
 
         const id = $('#idCateg').val(); // Obtener los valores actualizados del formulario
         const descripcion = $('#nombreCate').val();
-        
+
 
         $.ajax({
             url: "../controlador/editarCateg.php",

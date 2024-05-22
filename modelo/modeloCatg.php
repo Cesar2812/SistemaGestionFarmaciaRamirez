@@ -1,7 +1,8 @@
 <?php
 include 'Conexion.php';//incluyendo a la conexion a la base de datos con php
 
-class Categoria{
+class Categoria
+{
     var $objetos;
     private $acceso;
 
@@ -18,12 +19,13 @@ class Categoria{
 
 
     //funcion para crear Categoria
-    function crear_categoria($descripcion){
+    function crear_categoria($descripcion)
+    {
         try {
             //corroborandi si existe una Categoria con el mismo nombre
             $sql = "select c.id_Categoria from categoria c where c.descripcion=:descripcion";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':descripcion'=>$descripcion));
+            $query->execute(array(':descripcion' => $descripcion));
             $this->objetos = $query->fetchAll();
 
             //validacion de que el nombre no sea igual
@@ -47,7 +49,8 @@ class Categoria{
 
 
     //funcion para buscar Categoria
-    function buscar(){
+    function buscar()
+    {
         try {
             if (!empty($_POST['consulta'])) {
                 $consulta = $_POST['consulta'];
@@ -73,11 +76,12 @@ class Categoria{
 
 
     //funcion para editar Catgeoria
-    function editar($id, $descripcion){
+    function editar($id, $descripcion)
+    {
         try {
             $sql = "update categoria c set c.descripcion=:descripcion where c.id_Categoria=:id";
             $query = $this->acceso->prepare($sql);
-            $query->execute(array(':id' => $id, ':descripcion'=>$descripcion));
+            $query->execute(array(':id' => $id, ':descripcion' => $descripcion));
             echo 'edit';
         } catch (PDOException $e) {
             die("Error al ejecutar la consulta: " . $e->getMessage());
@@ -85,7 +89,8 @@ class Categoria{
     }
 
     //funcion para elimnar Catgeoria
-    function eliminar($id){
+    function eliminar($id)
+    {
         try {
             $sql = "DELETE FROM categoria WHERE id_Categoria=:id";
             $query = $this->acceso->prepare($sql);

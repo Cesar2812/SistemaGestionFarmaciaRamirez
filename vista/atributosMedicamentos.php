@@ -197,7 +197,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                 <label for="nombreCate">Nombre De La Categoria</label>
                                 <input id="nombreCate" type="text" class="form-control" placeholder="Ingrese El Nombre"
                                     required>
-                                <input type="text" id="idCateg">
+                                <input type="hidden" id="idCateg">
 
                             </div>
 
@@ -285,13 +285,13 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                     </div>
                     <div class="card-body">
                         <div class="alert alert-danger text-center" id="noADD" style="display:none;">
-                            <span><i class="fas fa-times m-1"></i>Ya Existe Una Categoria Con Este Nombre</span>
+                            <span><i class="fas fa-times m-1"></i>Ya Existe Una Prsentacion Con Este Nombre</span>
                         </div>
 
                         <form id="editarPresent">
                             <div class="form-group">
-                                <label for="nombrelab">Descripcion de la Presentacion</label>
-                                <input id="nombrelab" type="text" class="form-control" placeholder="Ingrese El Nombre"
+                                <label for="nombreprese">Descripcion de la Presentacion</label>
+                                <input id="nombreprese" type="text" class="form-control" placeholder="Ingrese El Nombre"
                                     required>
                                 <input type="hidden" id="idPresent">
 
@@ -331,15 +331,14 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                         </button>
                     </div>
                     <div class="card-body">
-                        <div class="alert alert-danger text-center" id="noAgregado" style="display:none;">
-                            <span><i class="fas fa-times m-1"></i>No Se Permite Ingresar con el Mismo Nombre De
-                                Usuario</span>
+                        <div class="alert alert-danger text-center" id="noAgrega" style="display:none;">
+                            <span><i class="fas fa-times m-1"></i>No Se Permite Ingresar Una Presentacion con el mismo Nombre</span>
                         </div>
 
-                        <form id="crearPresentacion">
+                        <form id="crearPresent">
                             <div class="form-group">
-                                <label for="nombre-categoria">Nombre De La Presentacion</label>
-                                <input id="nombre-categoria" type="text" class="form-control"
+                                <label for="nombre-presentacion">Nombre De La Presentacion</label>
+                                <input id="nombre-presentacion" type="text" class="form-control"
                                     placeholder="Ingrese El Nombre" required>
                             </div>
 
@@ -406,6 +405,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                 </div>
             </div>
         </section>
+
 
         <!-- Contenido de La Pagina -->
         <section class="content">
@@ -534,7 +534,7 @@ if ($_SESSION['rol'] === 1 || $_SESSION['rol'] === 3) {
                                                     </button>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input id="buscar-lab" type="text" class="form-control float-left"
+                                                    <input id="buscar-present" type="text" class="form-control float-left"
                                                         placeholder="Ingrese el Nombre de la Presentacion">
                                                     <div class="input-group-append"><button class="btn btn-default"><i
                                                                 class="fas fa-search"></i></button>
