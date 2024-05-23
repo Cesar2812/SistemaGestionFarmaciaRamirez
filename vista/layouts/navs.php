@@ -92,36 +92,188 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        <li class="nav-header">USUARIO</li>
 
-                        <li class="nav-item">
-                            <a href="../vista/edicionUsuarios.php" class="nav-link">
-                                <i class="nav-icon fas fa-user-edit"></i>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon  fas fa-user"></i>
                                 <p>
-                                    Editar Datos Del Usuario
+                                    USUARIOS
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/edicionUsuarios.php" class="nav-link">
+                                        <i class="fas fa-user-edit nav-icon"></i>
+                                        <p>Editar Datos del Usuario</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../vista/nuevoUsuario.php" class="nav-link">
+                                        <i class="fas fa-users nav-icon"></i>
+                                        <p>Nuevo Usuario</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="../vista/nuevoUsuario.php" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon  fa-solid fa-notes-medical"></i>
                                 <p>
-                                    Nuevo Usuario
+                                    MEDICAMENTOS
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Atributos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-pills nav-icon"></i>
+                                        <p>Gestion Medicamentos</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-boxes nav-icon"></i>
+                                        <p>Gestion Lotes</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
                         </li>
 
-                        <li class="nav-header">MEDICAMENTOS</li>
+                        
 
-                        <li class="nav-item">
-                            <a href="../vista/atributosMedicamentos.php" class="nav-link">
-                                <i class="nav-icon fas fa-vials"></i>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon  fas fa-briefcase-medical"></i>
                                 <p>
-                                    Atributos
+                                    EQUIPOS
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Atributos</p>
+                                    </a>
+                                </li>
+                                 <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Gestion Equipos</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
                         </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon  fa-solid fas fa-shopping-basket"></i>
+                                <p>
+                                    VENTAS
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Registrar Venta</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Detalle De Venta</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-dolly-flatbed"></i>
+                                <p>
+                                    PEDIDOS
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Gestionar Pedido</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Detalle De Pedido</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon  fa-solid fas fa-truck"></i>
+                                <p>
+                                    PROVEEDORES
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Gestionar Proveedores</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon  fa-solid fas fa-shipping-fast"></i>
+                                <p>
+                                    ENVIOS
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                        <i class="fas fa-vials nav-icon"></i>
+                                        <p>Gestionar Envios</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                        </li>
+
+                        
+
+
+                        
+
+
+
 
 
                     </ul>
