@@ -177,14 +177,4 @@ $(document).ready(function () {
         $('#editarPresent').trigger('reset');
     });
 
-
-
-
-
-
-
-
-
-
-
 });

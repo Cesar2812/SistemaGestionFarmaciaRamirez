@@ -1,7 +1,7 @@
 <?php
 //ESTA ES LA PAGINA PRINCIPAL DEL USUARIO ADMINISTRADOR
        
-
+       
 //iniciando la sesion 
 session_start();
 //validando si se cumple la condicion de que el usuario logueado tenga el rol de administrador para que el formulario pueda cargar 

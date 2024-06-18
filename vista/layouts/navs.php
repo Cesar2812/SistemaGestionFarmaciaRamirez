@@ -134,14 +134,14 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                    <a href="#" class="nav-link active">
                                         <i class="fas fa-pills nav-icon"></i>
                                         <p>Gestion Medicamentos</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                    <a href="#" class="nav-link active">
                                         <i class="fas fa-boxes nav-icon"></i>
                                         <p>Gestion Lotes</p>
                                     </a>
@@ -162,13 +162,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                    <a href="#" class="nav-link active">
                                         <i class="fas fa-vials nav-icon"></i>
                                         <p>Atributos</p>
                                     </a>
                                 </li>
                                  <li class="nav-item">
-                                    <a href="../vista/atributosMedicamentos.php" class="nav-link active">
+                                    <a href="#" class="nav-link active">
                                         <i class="fas fa-vials nav-icon"></i>
                                         <p>Gestion Equipos</p>
                                     </a>
