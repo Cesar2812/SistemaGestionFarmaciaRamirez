@@ -165,7 +165,7 @@ $(document).ready(function () {
     $('#funcion').val(funcion);
   });
 
-  //evento para borrar Usuario
+  //evento para borrar Usuario 
   $(document).on('click', '.borrar-usuario', (e) => {
     const elemento = $(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
     //console.log(elemento);

@@ -6,7 +6,7 @@ $categoria = new Categoria();
 //funcion para crear Categoria
 if ($_POST['funcion'] == 'crear_categoria') {
     $descripcion = $_POST['nombre_categ'];
-
+    
     $categoria->crear_categoria($descripcion);
 }
 
