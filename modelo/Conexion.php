@@ -1,7 +1,7 @@
 <?php
 class Conexion
 {
-    //declaracion de las variables para usarlas en la cadena de conexion a la base de datos   
+    //declaracion de las variables para usarlas en la cadena de conexion a la base de datos Mysql  
     private $hosting = "localhost";
     private $nameBD = "bdfarmaciaramirez";
 
