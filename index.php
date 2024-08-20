@@ -65,7 +65,7 @@ if (!empty($_SESSION['rol'])) {
 
     <body>
         <script>
-            // Function to handle empty or incorrect login credentials
+            // 
             function handleLoginError(errorMessage) {
                 Swal.fire({
                     position: "center",
@@ -77,16 +77,9 @@ if (!empty($_SESSION['rol'])) {
                 });
             }
 
-            /*Swal.fire({
-                position: 'center',
-                title: 'Error de Inicio de Sesión',
-                text: 'Usuario o contraseña incorrectos',
-                icon: 'error',
-                confirmButtonColor: '#d33',
-                confirmButtonText: 'OK'
-            });*/
+           
 
-            // Check for empty fields on form submission
+            // 
             document.querySelector('form').addEventListener('submit', function (event) {
                 event.preventDefault();
 

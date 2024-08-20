@@ -181,9 +181,6 @@ $(document).ready(function () {
     let pass = $('#old-pass').val();
     let id_usuario = $('#id_user').val();
     funcion = $('#funcion').val();
-    //console.log(pass);
-    //console.log(id_usuario);
-    //console.log(funcion);
     $.post('../controlador/ControladorUsuario.php', { pass, id_usuario, funcion }, (response) => {
       //console.log(response);
       if (response == 'ascendido') {

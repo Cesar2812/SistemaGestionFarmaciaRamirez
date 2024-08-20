@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 
     //esta funcion toma los datos y les quita el fromato JSON para pasarlos a las card
-    //evento para pasar todo a los card
+    //evento para pasar todo a los card incluyendo foto del usuario etc
     function buscar_Usuario(dato) {
         funcion = 'buscar_Usuario';
         $.post("../controlador/ControladorUsuario.php", { dato, funcion }, (response) => {
