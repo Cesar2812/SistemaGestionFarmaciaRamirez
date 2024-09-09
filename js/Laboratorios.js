@@ -6,7 +6,7 @@ $(document).ready(function () {
         let telefono_lab = $('#telefono-laboratorio').val();
         funcion = 'crear_laboratorio';
 
-        //peticion con Ajax para crear Laboratorio, se hace referncia al controlador del archivo php
+        //peticion con Ajax para crear Laboratorio,  se hace referncia al controlador del archivo php
         $.post('../controlador/ControladorLab.php', { nombre_lab, telefono_lab, funcion }, (response) => {
             if (response == 'agregado') {
                 Swal.fire({
