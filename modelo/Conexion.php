@@ -2,11 +2,11 @@
 class Conexion
 {
     //declaracion de las variables para usarlas en la cadena de conexion a la base de datos Mysql  
-    private $hosting = "localhost";
-    private $nameBD = "bdfarmaciaramirez";
+    private $hosting = "localhost";//servidor local
+    private $nameBD = "bdfarmaciaramirez";// nombre de la base de datos
 
-    private $usuario = "root";
-    private $pass = "root123";
+    private $usuario = "root";// usuario
+    private $pass = "root123";// contraseña
     private $charset = "utf8";
     public $pdo = null;
 

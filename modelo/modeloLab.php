@@ -3,7 +3,7 @@ include 'Conexion.php';//incluyendo a la conexion a la base de datos con php
 
 
 
-//creando la clase laboratorio 
+//
 class Laboratorio
 {
     var $objetos;
@@ -48,7 +48,7 @@ class Laboratorio
         }
     }
 
-    //funcion para buscar laboratorio
+    //funcion para buscar laboratorio desde la base de datos 
     function buscar()
     {
         try {
@@ -71,7 +71,7 @@ class Laboratorio
         } catch (PDOException $e) {
             die("Error al ejecutar la consulta: " . $e->getMessage());
 
-        }
+        } 
 
     }
 
